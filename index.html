@@ -7,7 +7,1252 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Name</title>
     
-    <style src="style.css"></style>
+    <style>body {
+      font-family: Tahoma, sans-serif;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+  }
+  /* Date Popup Styles */
+  #date-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  
+  #date-popup .popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 300px;
+  }
+  
+  
+  #date-popup h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  }
+  
+  
+  #select-day, #select-month {
+  padding: 5px;
+  font-size: 14px;
+  margin: 10px;
+  }
+  
+  
+  button {
+  padding: 10px;
+  background-color: #73a4ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+  }
+  
+  
+  button:hover {
+  background-color: #315f80;
+  }
+  
+  
+  
+  table {
+  border-collapse: separate;
+  border-spacing: 0 5px; /* Adds vertical spacing between rows */
+  }
+  tr.draggable {
+  cursor: move;
+  background-color: #f9f9f9; /* Default row background */
+  }
+  
+  tr.draggable.dragging {
+  opacity: 0.5;
+  background-color: #ffeb3b; /* Highlight during drag */
+  
+  }
+  
+  
+  .saved-file-entry {
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  }
+  
+  /* Enable Auto Save Button */
+  .btn-xtr-enable-as {
+  display: inline-block;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #73a4ff; /* Blue color */
+  border: 1px solid #000000;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  
+  }
+  
+  .btn-xtr-enable-as:hover {
+  transform: translateY(-3px); /* Slight lift on hover */
+  background: linear-gradient(135deg, #dd2476, #ff512f); /* Reverse gradient */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  }
+  
+  
+  .btn-xtr-enable-as:active {
+  transform: translateY(1px);
+  background: linear-gradient(135deg, #ff512f, #24dd71); /* Press-in effect */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+  }
+  
+  /* Save Table Button */
+  .btn-xtr-save-table {
+  background-color: #0056cc;
+  border-color: #003d99;
+  
+  }
+  
+  
+  .btn-xtr-save-table:hover {
+  background-color: #003d99;
+  }
+  
+  
+  .btn-xtr-save-table:active {
+  background-color: #0084ff;
+  }
+  
+  .resizable-table th:first-child,
+  .resizable-table td:first-child {
+  display: none;
+  }
+  
+  .saved-file-entry button {
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #73a4ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+  
+  .resizable-table tbody tr:nth-child(even) {
+  background-color: #dadada;
+  }
+  .resizable-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+  }
+  
+  .resizable-table tbody tr:hover {
+  background-color: #e3f2fd; /* Light blue */
+  transition: background-color 0.3s ease;
+  }
+  
+  
+  .saved-file-entry button:hover {
+  background-color: #315f80;
+  }
+  
+  
+  
+  
+  header, footer {
+      background-color: #ffffff;
+      color: #73a4ff;
+      text-align: left;
+      padding: 8px 0;
+      margin-left: 5%;
+      position: relative;
+  }
+  
+  header {
+      font-size: 10px;
+      font-weight: bold;
+      
+  }
+  
+  
+  header h2 {
+      text-align: right;
+      margin-right: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      
+  }
+  
+  /* General Popup Overlay */
+  /* Login Popup Overlay */
+  #login-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  }
+  
+  /* Login Popup */
+  #login-popup {
+  position: relative;
+  background: #ffffff;
+  border-radius: 10px;
+  width: 360px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  }
+  
+  /* Close Button */
+  #close-login-popup {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #ff5252;
+  font-size: 20px;
+  cursor: pointer;
+  }
+  
+  /* Title */
+  #popup-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #73a4ff;
+  margin-bottom: 20px;
+  }
+  
+  /* Firestore Popup Container */
+  .popup-container-two {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+  z-index: 1000; /* On top of other content */
+  backdrop-filter: blur(5px); /* Adds a subtle blur effect to the background */
+  }
+  
+  
+  /* Popup Content */
+  .popup-content-two {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  max-height: 80vh; /* Limit the height */
+  background-color: #fff; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling for content overflow */
+  }
+  
+  
+  /* Title Style */
+  .popup-content-two h3 {
+  font-size: 22px; /* Slightly larger font */
+  color: #4A90E2; /* Soft blue color */
+  margin-bottom: 15px;
+  border-bottom: 2px solid #4A90E2; /* Bottom border for emphasis */
+  padding-bottom: 5px;
+  text-align: center;
+  }
+  
+  
+  /* Saved Files List */
+  #firestore-tables-list {
+  margin-top: 10px;
+  }
+  
+  
+  /* Saved File Entry */
+  .saved-file-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background */
+  margin-bottom: 10px; /* Space between entries */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  
+  /* Load Button */
+  .saved-file-entry .load-button {
+  background-color: #4CAF50; /* Green button */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  }
+  
+  
+  /* Delete Button */
+  .saved-file-entry .delete-button {
+  background-color: #FF5252; /* Red button */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  }
+  
+  
+  /* Button Hover Effects */
+  .saved-file-entry .load-button:hover {
+  background-color: #388E3C; /* Darker green */
+  }
+  .saved-file-entry .delete-button:hover {
+  background-color: #D32F2F; /* Darker red */
+  }
+  
+  
+  /* Close Button */
+  #close-firestore-popup {
+  display: block;
+  background-color: #FF5252; /* Red close button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 15px auto 0; /* Centered with margin on top */
+  transition: all 0.3s ease;
+  text-align: center;
+  }
+  
+  
+  /* Close Button Hover */
+  #close-firestore-popup:hover {
+  background-color: #D32F2F; /* Darker red */
+  transform: scale(1.05); /* Slight scale on hover */
+  }
+  
+  
+  /* Scrollbar for Popup */
+  .popup-content-two::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+  }
+  
+  
+  .popup-content-two::-webkit-scrollbar-thumb {
+  background-color: #4A90E2; /* Blue scrollbar thumb */
+  border-radius: 4px;
+  }
+  
+  
+  .popup-content-two::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Light gray scrollbar track */
+  }
+  
+  
+  /* Input Fields */
+  #email,
+  #password {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s ease;
+  }
+  
+  #email:focus,
+  #password:focus {
+  border-bottom: 2px solid #73a4ff;
+  }
+  
+  /* Remember Me */
+  label {
+  display: block;
+  margin: 10px auto;
+  font-size: 14px;
+  color: #666;
+  text-align: left;
+  }
+  
+  /* Buttons */
+  #signin-btn,
+  #signup-btn {
+  display: block;
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #73a4ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  #signin-btn:hover,
+  #signup-btn:hover {
+  background-color: #c62828;
+  transform: scale(1.05);
+  }
+  
+  /* Sign Out Button */
+  #signout-btn {
+  display: none;
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #73a4ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  #signout-btn:hover {
+  background-color: #c62828;
+  transform: scale(1.05);
+  }
+  
+  /* Forgot Password Link */
+  #forgot-password-link {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #73a4ff;
+  text-decoration: none;
+  }
+  
+  #forgot-password-link:hover {
+  text-decoration: underline;
+  }
+  
+  /* Disabled Button Style */
+  #signin-btn:disabled {
+  background-color: #e0e0e0;
+  color: #9e9e9e;
+  cursor: not-allowed;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 400px) {
+  #login-popup {
+  width: 90%;
+  }
+  }
+  
+  
+  /* Stylish Floating Button */
+  .floating-login-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px; /* Position on the bottom-left corner */
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(45deg, #73a4ff, #2575fc); /* Gradient background */
+  border: none;
+  border-radius: 50%; /* Perfect circle */
+  color: white;
+  font-size: 26px; /* Slightly larger icon */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  cursor: pointer;
+  z-index: 1000; /* Ensure it's above everything */
+  animation: floating 2s infinite; /* Add subtle floating animation */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Hover Effect */
+  .floating-login-btn:hover {
+  transform: scale(2); /* Slightly enlarge on hover */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+  }
+  
+  /* Floating Animation */
+  @keyframes floating {
+  0% {
+  transform: translateY(0);
+  }
+  50% {
+  transform: translateY(-5px);
+  }
+  100% {
+  transform: translateY(0);
+  }
+  }
+  
+  /* Hidden During Print */
+  @media print {
+  .floating-login-btn {
+  display: none !important;
+  }
+  }
+  
+  
+  #login-popup #signup-btn {
+  background-color: #4caf50;
+  color: white;
+  }
+  
+  
+  #login-popup #signup-btn:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+  }
+  
+  
+  #login-popup #signout-btn {
+  background-color: #e63946;
+  color: white;
+  }
+  
+  
+  #login-popup #signout-btn:hover {
+  background-color: #a0212f;
+  transform: scale(1.05);
+  }
+  
+  
+  /* Close Button */
+  #close-login-popup {
+  background-color: #e63946;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  }
+  
+  
+  #close-login-popup:hover {
+  background-color: #a0212f;
+  }
+  
+  
+  /* Error Message */
+  #login-error-message {
+  color: #e63946;
+  font-size: 14px;
+  margin-top: 10px;
+  display: none; /* Hidden by default */
+  }
+  
+  .separator-line {
+      border: none;
+      border-top: 3px solid #73a4ff;
+      margin: 5px auto;
+      width: 95%;
+  }
+  
+          .agent-row {
+      border: none;
+      border-top: 3px solid #73a4ff;
+      margin: 5px auto;
+      width: 95%;
+  }
+  
+  .resizable-table {
+      width: 95%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      border: 1px solid #000;
+      margin: 20px auto;
+      table-layout: fixed;
+  }
+  
+  
+  
+  th, td {
+  text-align: right; /* Alignment */
+  border: 1px solid #6d6d6d;
+  word-wrap: break-word;
+  font-family: Arial, Helvetica, sans-serif;
+  white-space: normal;
+  overflow: hidden;
+  padding: 2px 4px; 
+  min-height: 20px; 
+  height: 20px; 
+  font-size: 13px;
+  line-height: 1.1;
+  }
+  
+  th {
+  text-align: center; 
+  border: 1px solid #6d6d6d;
+  padding: 4px 6px;
+  font-size: 14px; 
+  line-height: 1.4;
+  background-color: #73a4ff; 
+  color: white; 
+  }
+  
+  
+  tr:nth-child(even) {
+      background-color: #dadada;
+  }
+  
+  
+  
+  .font-size-display {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #555;
+  }
+  
+  
+  
+  #calculate-button, #calculate-total {
+      background-color: #73a4ff;
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease-in-out;
+  }
+  
+  #calculate-button:hover, #calculate-total:hover {
+      background-color: #315f80;
+      transform: scale(1.05);
+      box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  #calculate-button:active, #calculate-total:active {
+      transform: scale(1);
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  @media print { 
+     #calculate-total {
+      display: none;
+     }
+  }
+  
+  /* Executive Badge Container */
+  .total-section {
+  width: 40%;
+  margin: 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  }
+  
+  /* Elegant Hover Effect */
+  .total-section:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  }
+  
+  /* Decorative Gradient Bar */
+  .total-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #407bff, #73a4ff);
+  }
+  
+  /* Header - Executive Style */
+  .total-header {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Structured Input Section */
+  .total-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 20px 0;
+  }
+  
+  /* Wider & Sleek Input Fields */
+  .total-column input {
+  background: rgba(240, 243, 255, 0.85);
+  width: 180px;  /* Increased width */
+  padding: 12px; /* Balanced padding */
+  text-align: center;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  font-size: 16px; /* Slightly smaller font */
+  font-weight: 500;
+  color: #2c3e50;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  }
+  
+  /* Input Focus Effect */
+  .total-column input:focus {
+  border-color: #407bff;
+  box-shadow: 0 0 10px rgba(64, 123, 255, 0.4);
+  }
+  
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+  .total-section {
+  width: 80%;
+  padding: 20px;
+  }
+  .total-body {
+  gap: 10px;
+  }
+  .total-column input {
+  width: 160px; /* Adjusted for mobile */
+  font-size: 15px;
+  }
+  }
+  
+  
+  
+  .slider-container {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+  
+  
+  @media print { 
+     #add-row-button {
+      display: none;
+     }
+  }
+  
+  @media print { 
+     #remove-row-button {
+      display: none;
+     }
+  }
+  
+  /* Footer Section */
+  
+  
+  .slider-container label {
+  width: 20%;
+  text-align: left;
+  font-weight: bold;
+  }
+  
+  .slider-container input[type="range"] {
+  width: 60%;
+  }
+  
+  .slider-value {
+  width: 20%;
+  text-align: right;
+  }
+  
+  #reset-columns {
+  background-color: #73a4ff;
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  }
+  
+  #reset-columns:hover {
+  background-color: #73a4ff;
+  transform: scale(1.05);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Hide Resizing Tool During Print */
+  @media print {
+  #resize-columns-button,.slider-container,#resizing-tool,  .slider-container label,#resizing-tool h3, #reset-columns
+  {
+  display: none !important;
+  }
+  }
+  
+  .editor-popup {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background-color: #f9f9f9;border: 2px solid #73a4ff;border-radius: 10px;padding: 20px;z-index: 1000;display: none;width: 400px;box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .resizable-table th:first-child,
+  .resizable-table td:first-child {
+  width: 50px; /* Adjust as needed */
+  max-width: 70px; /* Optional: to ensure no extreme resizing */
+  text-align: center; /* Optional: for better alignment */
+  }
+  
+  @media print {
+  #add-column-button,
+  #remove-column-button {
+  display: none;
+  }
+  }
+  
+  /* Parent container for centering */
+  .center-container {
+  display: flex; /* Enables flexbox for centering */
+  justify-content: center; /* Centers horizontally */
+  margin: 10px 0; /* Adds spacing between header and table */
+  }
+  
+  /* Oval styling */
+  .editable-oval {
+  display: inline-block; /* Keep it dynamically sized */
+  text-align: center;
+  font-weight: bold;/* Centers text inside the oval */
+  padding: 10px 20px; /* Inner spacing for oval shape */
+  border: 2px solid #73a4ff; /* Border color */
+  border-radius: 50px; /* Creates the oval shape */
+  font-size: 16px; /* Text size */
+  color: #000; /* Text color */
+  background-color: transparent; /* Transparent background */
+  outline: none; /* Removes focus outline */
+  cursor: text; /* Shows text-editing cursor */
+  }
+  
+  
+  /* Popup Container - Modern Design */
+  .popup-container {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Dim background with a soft black overlay */
+  z-index: 9999; /* On top of everything */
+  backdrop-filter: blur(5px); /* Adds a subtle blur effect to the background */
+  }
+  
+  /* Popup Content */
+  /* Popup Content (Scrollable Area) */
+  .popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  max-height: 80vh; /* Limit the popup height to 80% of the viewport */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  box-sizing: border-box; /* Ensure padding is included in the dimensions */
+  }
+  .popup-content::-webkit-scrollbar {
+  width: 8px;
+  }
+  
+  .popup-content::-webkit-scrollbar-thumb {
+  background-color: #73a4ff;
+  border-radius: 4px;
+  }
+  
+  .popup-content::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  }
+  
+  /* Popup Title */
+  .popup-content h3 {
+  font-size: 24px; /* Larger font size for the title */
+  font-weight: bold;
+  color: #333333; /* Dark gray text */
+  margin-bottom: 20px; /* Space below the title */
+  border-bottom: 2px solid #73a4ff; /* Blue underline */
+  padding-bottom: 10px;
+  }
+  
+  /* Buttons Container */
+  .popup-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Spacing between buttons */
+  justify-content: center;
+  margin-bottom: 20px;
+  }
+  
+  /* Agent Buttons */
+  .agent-button {
+  background-color: #73a4ff; /* Primary blue color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px; /* Smooth rounded corners */
+  cursor: pointer;
+  font-size: 14px; /* Medium font size */
+  font-weight: bold;
+  transition: all 0.3s ease; /* Smooth hover effect */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  .agent-button:hover {
+  background-color: #315f80; /* Darker blue on hover */
+  transform: translateY(-3px); /* Lifts the button */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  }
+  
+  /* Close Button */
+  #close-popup {
+  background-color: #e63946; /* Red for the close button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 14px; /* Medium font size */
+  font-weight: bold;
+  transition: all 0.3s ease; /* Smooth hover effect */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  #close-popup:hover {
+  background-color: #a0212f; /* Darker red on hover */
+  transform: translateY(-3px); /* Lifts the button */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  }
+  
+  /* Saved Files Entry */
+  .saved-file-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 10px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light gray background */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin-bottom: 15px; /* Spacing between entries */
+  font-size: 14px; /* Medium font size */
+  font-weight: bold;
+  }
+  
+  /* Load Button */
+  .saved-file-entry .load-button {
+  background-color: #73a4ff; /* Primary blue */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px; /* Slightly smaller font */
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  .saved-file-entry .load-button:hover {
+  background-color: #315f80;
+  transform: scale(1.05); /* Slightly enlarges */
+  }
+  
+  /* Delete Button */
+  .saved-file-entry .delete-button {
+  background-color: #e63946; /* Red color */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  .saved-file-entry .delete-button:hover {
+  background-color: #a0212f; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarges */
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 600px) {
+  .popup-content {
+  width: 90%;
+  padding: 20px;
+  }
+  
+  .popup-content h3 {
+  font-size: 20px;
+  }
+  
+  .agent-button, #close-popup {
+  font-size: 12px;
+  padding: 8px 15px;
+  }
+  }
+  
+  .resizable-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  font-size: 20px;
+  background-color: #73a4ff; /* Blue header */
+  color: white;
+  border-bottom: 2px solid #73a4ff;
+  }
+  
+  .resizable-table th {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  }
+  
+  
+  #close-popup:hover {
+  background-color: #a0212f;
+  }
+  
+  /* Floating Button Styles */
+  .floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #73a4ff; /* Blue background */
+  color: white;
+  border: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  font-size: 24px; /* Larger font size for icon */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  z-index: 999; /* Ensure it appears above other elements */
+  }
+  
+  /* Hover Effect */
+  .floating-button:hover {
+  background-color: #315f80; /* Darker blue on hover */
+  transform: scale(1.1); /* Slightly enlarge */
+  }
+  
+  /* Hidden During Print */
+  @media print {
+  .floating-button {
+  display: none;
+  }
+  }
+  
+  
+  /* Popup Styles */
+  
+  
+  .close-button {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  }
+  
+  
+  .close-button:hover {
+  background-color: #a0212f;
+  }
+  
+  
+  /* Saved File Entry */
+  .saved-file-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  }
+  
+  
+  .saved-file-entry button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  }
+  
+  
+  .saved-file-entry button.load-button {
+  background-color: #73a4ff;
+  color: white;
+  }
+  
+  
+  .saved-file-entry button.load-button:hover {
+  background-color: #315f80;
+  }
+  
+  
+  .saved-file-entry button.delete-button {
+  background-color: #e63946;
+  color: white;
+  }
+  
+  
+  .saved-file-entry button.delete-button:hover {
+  background-color: #a0212f;
+  }
+  
+  @keyframes row-highlight {
+  from {
+  background-color: #ffffcc;
+  }
+  to {
+  background-color: transparent;
+  }
+  }
+  
+  .resizable-table tbody tr.added {
+  animation: row-highlight 1.5s ease-out;
+  }
+  
+  /* Oval Button Design */
+  #agent-selector {
+  display: inline-block;
+  padding: 12px 30px; /* Adds spacious padding */
+  border: 2px solid #73a4ff; /* Elegant blue border */
+  border-radius: 50px; /* Makes it oval-shaped */
+  font-size: 16px; /* Clean and modern font size */
+  font-weight: bold; /* Bold text for emphasis */
+  color: #315f80; /* Elegant dark blue text */
+  background: #ffffff; /* White background for a classy look */
+  text-align: center; /* Centers the text */
+  text-transform: capitalize; /* Capitalizes text */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  cursor: pointer; /* Indicates interactivity */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover Effect */
+  #agent-selector:hover {
+  background: #f9f9f9; /* Slightly darker white on hover */
+  border-color: #315f80; /* Darker border on hover */
+  color: #73a4ff; /* Lighter blue text */
+  transform: scale(1.05); /* Slight enlargement */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  }
+  
+  /* Active State */
+  #agent-selector:active {
+  transform: scale(0.98); /* Slight press-in effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+  }
+  
+  /* Focus State for Accessibility */
+  #agent-selector:focus {
+  outline: none; /* Removes default outline */
+  box-shadow: 0 0 0 4px rgba(115, 164, 255, 0.5); /* Elegant focus ring */
+  }
+  
+  
+  /* Saved Files List with Scroll Bar */
+  /* Saved Files List with Scrolling */
+  .saved-files-list {
+  max-height: 300px; /* Limits the height of the list */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 100%; /* Ensure it spans the popup width */
+  box-sizing: border-box; /* Include padding in width */
+  }
+  
+  /* Scrollbar Styles */
+  .saved-files-list::-webkit-scrollbar {
+  width: 8px;
+  }
+  
+  .saved-files-list::-webkit-scrollbar-thumb {
+  background-color: #73a4ff;
+  border-radius: 4px;
+  }
+  
+  .saved-files-list::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  }
+  
+  
+  /* Floating Buttons (Applies to Both Buttons) */
+  
+  
+  @media print {.floating-button,.export-button,.highlighted,.btn-xtr-enable-as,.btn-xtr-save-table, .popup-container {
+  display: none !important;
+  }
+  }
+  @media print {
+  thead {
+  background-color: #73a4ff !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color: white;
+  }
+  }
+  
+  </style>
 
   </head>
 <body>
