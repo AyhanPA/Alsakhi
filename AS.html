@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Name</title>
+    
+    <style src="style.css"></style>
+
+  </head>
+<body>
+  
+  <div class="position-fixed top-0 start-0 p-3" style="z-index: 1050;">
+    <div id="customToast" class="toast hide bg-primary text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Notification</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body" id="toastMessage">
+            This is a toast notification.
+        </div>
+    </div>
+</div>
+
+<!-- Login/Signup Popup -->
+<div id="login-popup-overlay">
+    <div id="login-popup">
+      <button id="close-login-popup">&times;</button>
+      <h3 id="popup-title">Login</h3>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <label>
+        <input type="checkbox" id="remember-me"> Remember Me
+      </label>
+      <button id="signin-btn">Sign In</button>
+      <button id="signup-btn">Sign Up</button>
+      <button id="signout-btn" style="display: none;">Sign Out</button>
+    </div>
+  </div>
+  
+
+
+  <!-- Account Button -->
+  <button id="account-button" class="floating-login-btn" title="Account">👤</button>
+
+
+  
+    <header>
+       
+        <h1>AL SAKHI GENERAL TRADING CO.LTD</h1>
+        <h2>شركة السخي للتجارة العامة المحدودة </h2>
+    </header>
+    <hr class="separator-line">
+    <div class="center-container">
+        <div class="editable-oval" id="agent-selector">Select Agent</div>
+    </div>
+
+<!-- New Load From Firestore Button -->
+<button id="load-from-firestore-button" class="floating-button" title="Saved Files">
+  💾
+</button>
+
+
+
+<!-- Firestore Tables Popup -->
+<!-- Firestore Tables Popup -->
+<div id="firestore-popup" class="popup-container-two">
+    <div class="popup-content-two">
+        <h3>Saved Tables</h3>
+        <div id="firestore-tables-list">
+            <!-- Firestore saved tables will appear here -->
+        </div>
+        <button id="close-firestore-popup" class="close-button">Close</button>
+    </div>
+</div>
+
+
+
+
+<!-- Saved Files Popup -->
+<div id="saved-files-popup" class="popup-container">
+    <div class="popup-content">
+        <h3>Saved Files</h3>
+            <!-- Search Bar -->
+            <input type="text" id="search-saved-files" placeholder="Search saved files..." style="width: 90%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+        <div id="saved-files-list"></div>
+        <button id="close-saved-files" class="close-button">Close</button>
+    </div>
+</div>
+
+<!-- Date Popup -->
+<!-- Date Popup -->
+<div id="date-popup" class="popup-container">
+  <div class="popup-content">
+      <h3>Select Date</h3>
+      <div>
+          <label for="select-day">Day:</label>
+          <select id="select-day">
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+              <option value="06">06</option>
+              <option value="07">07</option>
+              <option value="08">08</option>
+              <option value="09">09</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+          </select>
+      </div>
+      <div>
+          <label for="select-month">Month:</label>
+          <select id="select-month">
+              <option value="01">01 (January)</option>
+              <option value="02">02 (February)</option>
+              <option value="03">03 (March)</option>
+              <option value="04">04 (April)</option>
+              <option value="05">05 (May)</option>
+              <option value="06">06 (June)</option>
+              <option value="07">07 (July)</option>
+              <option value="08">08 (August)</option>
+              <option value="09">09 (September)</option>
+              <option value="10">10 (October)</option>
+              <option value="11">11 (November)</option>
+              <option value="12">12 (December)</option>
+          </select>
+      </div>
+      <button id="save-date">Save Date</button>
+      <button id="cancel-date">Cancel</button>
+  </div>
+</div>
+
+<div id="autosave-indicator" style="
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #27ae60;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+">
+    Saving...
+</div>
+
+
+
+    <!-- Popup -->
+    <div id="agent-popup" class="popup-container">
+        <div class="popup-content">
+            <h3>Select an Agent</h3>
+            <div class="popup-buttons">
+                <!-- 13 Buttons for Agents -->
+                <button class="agent-button" data-agent="خبيب - دهوك">خبيب - دهوك</button>
+                <button class="agent-button" data-agent="نژيار - زاخو">نژيار - زاخو</button>
+                <button class="agent-button" data-agent="يوسف - عقرة">يوسف - عقرة</button>
+                <button class="agent-button" data-agent="ناصح - أربيل">ناصح - أربيل</button>
+                <button class="agent-button" data-agent="علي - أربيل">علي - أربيل</button>
+                <button class="agent-button" data-agent="سردار - أربيل">سردار - أربيل</button>
+                <button class="agent-button" data-agent="ريبوار - أربيل">ريبوار - أربيل</button>
+                <button class="agent-button" data-agent="مؤيد - كركوك">مؤيد - كركوك</button>
+                <button class="agent-button" data-agent="نورس - رانية">نورس - رانية</button>
+              <button class="agent-button" data-agent="فرياد - كلار" >فرياد - كلار</button>
+              <button class="agent-button" data-agent="شاهو - سليمانية" >شاهو - سليمانية</button>
+              <button class="agent-button" data-agent="سربست - كلك" >سربست - كلك</button>
+              <button class="agent-button" data-agent="خطاب - موصل" >خطاب - موصل</button>
+              <button class="agent-button" data-agent="فارس - روفيا" >فارس - روفيا</button>
+            </div>
+            <button id="close-popup">Close</button>
+        </div>
+    </div>
+    
+    <!-- Main Table -->
+    <table id="myTable" class="resizable-table">
+        <thead>
+            <tr class="draggable">
+                <th></th>
+                <th>مدين</th>
+                <th>دائن</th>
+                <th>نقل</th>
+                <th>التاريخ</th>
+                <th>البيان</th>
+                <th>الرصيد</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="draggable">
+              <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Total Row Section -->
+     <!-- Resize Columns Button -->
+<button id="resize-columns-button" style="margin: 20px auto; display: block;">Resize Columns</button>
+
+<!-- Add and Remove Columns Buttons -->
+<div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+    <button id="add-column-button" style="display: none;">Add Column</button>
+    <button id="remove-column-button" style="display: none;">Remove Column</button>
+    <button id="add-row-button">Add Row</button>
+<button id="remove-row-button">Remove Row</button>
+<button id="save-table-2-button" class="btn-xtr-save-table" title="Save Table 2">
+  Save Table
+</button>
+<button id="enable-autosave-button" class="btn-xtr-enable-as">Enable AS</button>
+</div>
+
+
+<!-- Resizing Tool Section -->
+<div id="resizing-tool" style="display: none; margin: 20px auto; text-align: center;">
+    <h3>Resize Columns</h3>
+    <div id="sliders-container"></div>
+    <button id="reset-columns">Reset Columns</button>
+</div>
+
+    <div class="total-section">
+        <div class="total-header">حساب الكلي (دينار عراقي)</div>
+        <div class="total-body">
+            <div class="total-column">
+                <label for="total-debit">إجمالي المدين:</label>
+                <input type="text" id="total-debit" placeholder="0.00" readonly>
+            </div>
+            <div class="total-column">
+                <label for="total-credit">إجمالي الدائن:</label>
+                <input type="text" id="total-credit" placeholder="0.00" readonly>
+            </div>
+            <div class="total-column">
+                <label for="total-balance">الرصيد النهائي:</label>
+                <input type="text" id="total-balance" placeholder="0.00" readonly>
+            </div>
+        </div>
+        <button id="calculate-total">حساب</button>
+    </div>
+
+
+    <!-- Popup Editor -->
+    <div class="editor-popup" style="display: none;">
+        <label for="cell-text">Edit Text:</label>
+        <input type="text" id="cell-text" placeholder="Type your text here">
+
+        <label for="font-style">Font Style:</label>
+        <select id="font-style">
+            <option value="normal">Normal</option>
+            <option value="italic">Italic</option>
+            <option value="bold">Bold</option>
+        </select>
+
+        <label for="font-slider">Font Size:</label>
+        <input type="range" id="font-slider" min="10" max="30" value="14">
+        <div class="font-size-display" id="font-size-display">14px</div>
+
+        <div id="live-preview">Live Preview: <span id="preview-text"></span></div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <button id="save-edit">Save</button>
+            <button id="cancel-edit">Cancel</button>
+            <button id="reset-edit" class="reset-button">Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+
+<!-- Saved Files Tab -->
+<script type="module" src="module.js"></script>
+    
+</body>
+</html>
