@@ -7,92 +7,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Name</title>
     
-    <style>body {
-      font-family: Tahoma, sans-serif;
-      direction: rtl;
-      margin: 0;
-      padding: 0;
-  }
-  /* Date Popup Styles */
-  #date-popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-  }
-  
-  
-  #date-popup .popup-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  width: 300px;
-  }
-  
-  
-  #date-popup h3 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  }
-  
-  
-  #select-day, #select-month {
-  padding: 5px;
-  font-size: 14px;
-  margin: 10px;
-  }
-  
-  
-  button {
-  padding: 10px;
-  background-color: #73a4ff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 5px;
-  }
-  
-  
-  button:hover {
-  background-color: #315f80;
-  }
-  
-  
-  
-  table {
-  border-collapse: separate;
-  border-spacing: 0 5px; /* Adds vertical spacing between rows */
-  }
-  tr.draggable {
-  cursor: move;
-  background-color: #f9f9f9; /* Default row background */
-  }
-  
-  tr.draggable.dragging {
-  opacity: 0.5;
-  background-color: #ffeb3b; /* Highlight during drag */
-  
-  }
-  
-  
-  .saved-file-entry {
-  margin: 10px 0;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  }
-  
-  /* Enable Auto Save Button */
-  .btn-xtr-enable-as {
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+/* Date Popup Styles */
+#date-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#date-popup .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+}
+
+
+#date-popup h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+
+#select-day, #select-month {
+    padding: 5px;
+    font-size: 14px;
+    margin: 10px;
+}
+
+
+button {
+    padding: 10px;
+    background-color: #73a4ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+
+button:hover {
+    background-color: #315f80;
+}
+
+
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 5px; /* Adds vertical spacing between rows */
+}
+tr.draggable {
+    cursor: move;
+    background-color: #f9f9f9; /* Default row background */
+}
+
+tr.draggable.dragging {
+    opacity: 0.5;
+    background-color: #ffeb3b; /* Highlight during drag */
+    
+}
+
+
+.saved-file-entry {
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Enable Auto Save Button */
+.btn-xtr-enable-as {
   display: inline-block;
   padding: 8px 14px;
   font-size: 12px;
@@ -106,101 +107,101 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  
-  }
-  
-  .btn-xtr-enable-as:hover {
-  transform: translateY(-3px); /* Slight lift on hover */
-  background: linear-gradient(135deg, #dd2476, #ff512f); /* Reverse gradient */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
-  }
-  
-  
-  .btn-xtr-enable-as:active {
-  transform: translateY(1px);
-  background: linear-gradient(135deg, #ff512f, #24dd71); /* Press-in effect */
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Reduced shadow */
-  }
-  
-  /* Save Table Button */
-  .btn-xtr-save-table {
+
+}
+
+.btn-xtr-enable-as:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    background: linear-gradient(135deg, #dd2476, #ff512f); /* Reverse gradient */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+
+.btn-xtr-enable-as:active {
+    transform: translateY(1px);
+    background: linear-gradient(135deg, #ff512f, #24dd71); /* Press-in effect */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+/* Save Table Button */
+.btn-xtr-save-table {
   background-color: #0056cc;
   border-color: #003d99;
-  
-  }
-  
-  
-  .btn-xtr-save-table:hover {
+
+}
+
+
+.btn-xtr-save-table:hover {
   background-color: #003d99;
-  }
-  
-  
-  .btn-xtr-save-table:active {
+}
+
+
+.btn-xtr-save-table:active {
   background-color: #0084ff;
-  }
-  
-  .resizable-table th:first-child,
-  .resizable-table td:first-child {
+}
+
+.resizable-table th:first-child,
+.resizable-table td:first-child {
   display: none;
-  }
-  
-  .saved-file-entry button {
-  margin: 5px;
-  padding: 5px 10px;
-  background-color: #73a4ff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  }
-  
-  .resizable-table tbody tr:nth-child(even) {
-  background-color: #dadada;
-  }
-  .resizable-table tbody tr:nth-child(odd) {
-  background-color: #ffffff;
-  }
-  
-  .resizable-table tbody tr:hover {
-  background-color: #e3f2fd; /* Light blue */
-  transition: background-color 0.3s ease;
-  }
-  
-  
-  .saved-file-entry button:hover {
-  background-color: #315f80;
-  }
-  
-  
-  
-  
-  header, footer {
-      background-color: #ffffff;
-      color: #73a4ff;
-      text-align: left;
-      padding: 8px 0;
-      margin-left: 5%;
-      position: relative;
-  }
-  
-  header {
-      font-size: 10px;
-      font-weight: bold;
-      
-  }
-  
-  
-  header h2 {
-      text-align: right;
-      margin-right: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      
-  }
-  
-  /* General Popup Overlay */
-  /* Login Popup Overlay */
-  #login-popup-overlay {
+}
+
+.saved-file-entry button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #73a4ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.resizable-table tbody tr:nth-child(even) {
+    background-color: #dadada;
+}
+.resizable-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.resizable-table tbody tr:hover {
+    background-color: #e3f2fd; /* Light blue */
+    transition: background-color 0.3s ease;
+}
+
+
+.saved-file-entry button:hover {
+    background-color: #315f80;
+}
+
+
+
+
+        header, footer {
+            background-color: #ffffff;
+            color: #73a4ff;
+            text-align: left;
+            padding: 8px 0;
+            margin-left: 5%;
+            position: relative;
+        }
+
+        header {
+            font-size: 10px;
+            font-weight: bold;
+            
+        }
+
+
+        header h2 {
+            text-align: right;
+            margin-right: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            
+        }
+
+        /* General Popup Overlay */
+/* Login Popup Overlay */
+#login-popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -211,10 +212,10 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  }
-  
-  /* Login Popup */
-  #login-popup {
+}
+
+/* Login Popup */
+#login-popup {
   position: relative;
   background: #ffffff;
   border-radius: 10px;
@@ -223,10 +224,10 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   font-family: Arial, sans-serif;
-  }
-  
-  /* Close Button */
-  #close-login-popup {
+}
+
+/* Close Button */
+#close-login-popup {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -235,155 +236,155 @@
   color: #ff5252;
   font-size: 20px;
   cursor: pointer;
-  }
-  
-  /* Title */
-  #popup-title {
+}
+
+/* Title */
+#popup-title {
   font-size: 22px;
   font-weight: bold;
   color: #73a4ff;
   margin-bottom: 20px;
-  }
-  
-  /* Firestore Popup Container */
-  .popup-container-two {
-  display: none; /* Initially hidden */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
-  z-index: 1000; /* On top of other content */
-  backdrop-filter: blur(5px); /* Adds a subtle blur effect to the background */
-  }
-  
-  
-  /* Popup Content */
-  .popup-content-two {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  max-height: 80vh; /* Limit the height */
-  background-color: #fff; /* White background */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  padding: 20px;
-  overflow-y: auto; /* Enable scrolling for content overflow */
-  }
-  
-  
-  /* Title Style */
-  .popup-content-two h3 {
-  font-size: 22px; /* Slightly larger font */
-  color: #4A90E2; /* Soft blue color */
-  margin-bottom: 15px;
-  border-bottom: 2px solid #4A90E2; /* Bottom border for emphasis */
-  padding-bottom: 5px;
-  text-align: center;
-  }
-  
-  
-  /* Saved Files List */
-  #firestore-tables-list {
-  margin-top: 10px;
-  }
-  
-  
-  /* Saved File Entry */
-  .saved-file-entry {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  border: 1px solid #ddd; /* Light gray border */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #f9f9f9; /* Light background */
-  margin-bottom: 10px; /* Space between entries */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-  
-  
-  /* Load Button */
-  .saved-file-entry .load-button {
-  background-color: #4CAF50; /* Green button */
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  }
-  
-  
-  /* Delete Button */
-  .saved-file-entry .delete-button {
-  background-color: #FF5252; /* Red button */
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  }
-  
-  
-  /* Button Hover Effects */
-  .saved-file-entry .load-button:hover {
-  background-color: #388E3C; /* Darker green */
-  }
-  .saved-file-entry .delete-button:hover {
-  background-color: #D32F2F; /* Darker red */
-  }
-  
-  
-  /* Close Button */
-  #close-firestore-popup {
-  display: block;
-  background-color: #FF5252; /* Red close button */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  margin: 15px auto 0; /* Centered with margin on top */
-  transition: all 0.3s ease;
-  text-align: center;
-  }
-  
-  
-  /* Close Button Hover */
-  #close-firestore-popup:hover {
-  background-color: #D32F2F; /* Darker red */
-  transform: scale(1.05); /* Slight scale on hover */
-  }
-  
-  
-  /* Scrollbar for Popup */
-  .popup-content-two::-webkit-scrollbar {
-  width: 8px; /* Scrollbar width */
-  }
-  
-  
-  .popup-content-two::-webkit-scrollbar-thumb {
-  background-color: #4A90E2; /* Blue scrollbar thumb */
-  border-radius: 4px;
-  }
-  
-  
-  .popup-content-two::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Light gray scrollbar track */
-  }
-  
-  
-  /* Input Fields */
-  #email,
-  #password {
+}
+
+/* Firestore Popup Container */
+.popup-container-two {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+    z-index: 1000; /* On top of other content */
+    backdrop-filter: blur(5px); /* Adds a subtle blur effect to the background */
+}
+
+
+/* Popup Content */
+.popup-content-two {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-height: 80vh; /* Limit the height */
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    padding: 20px;
+    overflow-y: auto; /* Enable scrolling for content overflow */
+}
+
+
+/* Title Style */
+.popup-content-two h3 {
+    font-size: 22px; /* Slightly larger font */
+    color: #4A90E2; /* Soft blue color */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #4A90E2; /* Bottom border for emphasis */
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+
+/* Saved Files List */
+#firestore-tables-list {
+    margin-top: 10px;
+}
+
+
+/* Saved File Entry */
+.saved-file-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+    margin-bottom: 10px; /* Space between entries */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+
+/* Load Button */
+.saved-file-entry .load-button {
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+
+/* Delete Button */
+.saved-file-entry .delete-button {
+    background-color: #FF5252; /* Red button */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+
+/* Button Hover Effects */
+.saved-file-entry .load-button:hover {
+    background-color: #388E3C; /* Darker green */
+}
+.saved-file-entry .delete-button:hover {
+    background-color: #D32F2F; /* Darker red */
+}
+
+
+/* Close Button */
+#close-firestore-popup {
+    display: block;
+    background-color: #FF5252; /* Red close button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 15px auto 0; /* Centered with margin on top */
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+
+/* Close Button Hover */
+#close-firestore-popup:hover {
+    background-color: #D32F2F; /* Darker red */
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+
+/* Scrollbar for Popup */
+.popup-content-two::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+}
+
+
+.popup-content-two::-webkit-scrollbar-thumb {
+    background-color: #4A90E2; /* Blue scrollbar thumb */
+    border-radius: 4px;
+}
+
+
+.popup-content-two::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Light gray scrollbar track */
+}
+
+
+/* Input Fields */
+#email,
+#password {
   display: block;
   width: calc(100% - 20px);
   margin: 10px auto;
@@ -393,25 +394,26 @@
   border-bottom: 2px solid #ccc;
   outline: none;
   transition: border-color 0.3s ease;
-  }
-  
-  #email:focus,
-  #password:focus {
+}
+
+#email:focus,
+#password:focus {
   border-bottom: 2px solid #73a4ff;
-  }
-  
-  /* Remember Me */
-  label {
+}
+
+
+/* Remember Me */
+label {
   display: block;
   margin: 10px auto;
   font-size: 14px;
   color: #666;
   text-align: left;
-  }
-  
-  /* Buttons */
-  #signin-btn,
-  #signup-btn {
+}
+
+/* Buttons */
+#signin-btn,
+#signup-btn {
   display: block;
   width: 100%;
   margin: 10px auto;
@@ -423,16 +425,16 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  #signin-btn:hover,
-  #signup-btn:hover {
+}
+
+#signin-btn:hover,
+#signup-btn:hover {
   background-color: #c62828;
   transform: scale(1.05);
-  }
-  
-  /* Sign Out Button */
-  #signout-btn {
+}
+
+/* Sign Out Button */
+#signout-btn {
   display: none;
   width: 100%;
   margin: 10px auto;
@@ -444,43 +446,43 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  #signout-btn:hover {
+}
+
+#signout-btn:hover {
   background-color: #c62828;
   transform: scale(1.05);
-  }
-  
-  /* Forgot Password Link */
-  #forgot-password-link {
+}
+
+/* Forgot Password Link */
+#forgot-password-link {
   display: block;
   margin-top: 10px;
   font-size: 14px;
   color: #73a4ff;
   text-decoration: none;
-  }
-  
-  #forgot-password-link:hover {
+}
+
+#forgot-password-link:hover {
   text-decoration: underline;
-  }
-  
-  /* Disabled Button Style */
-  #signin-btn:disabled {
+}
+
+/* Disabled Button Style */
+#signin-btn:disabled {
   background-color: #e0e0e0;
   color: #9e9e9e;
   cursor: not-allowed;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 400px) {
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
   #login-popup {
-  width: 90%;
+    width: 90%;
   }
-  }
-  
-  
-  /* Stylish Floating Button */
-  .floating-login-btn {
+}
+
+
+/* Stylish Floating Button */
+.floating-login-btn {
   position: fixed;
   bottom: 20px;
   left: 20px; /* Position on the bottom-left corner */
@@ -496,61 +498,61 @@
   z-index: 1000; /* Ensure it's above everything */
   animation: floating 2s infinite; /* Add subtle floating animation */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
-  /* Hover Effect */
-  .floating-login-btn:hover {
+}
+
+/* Hover Effect */
+.floating-login-btn:hover {
   transform: scale(2); /* Slightly enlarge on hover */
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
-  }
-  
-  /* Floating Animation */
-  @keyframes floating {
+}
+
+/* Floating Animation */
+@keyframes floating {
   0% {
-  transform: translateY(0);
+    transform: translateY(0);
   }
   50% {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
   }
   100% {
-  transform: translateY(0);
+    transform: translateY(0);
   }
-  }
-  
-  /* Hidden During Print */
-  @media print {
+}
+
+/* Hidden During Print */
+@media print {
   .floating-login-btn {
-  display: none !important;
+    display: none !important;
   }
-  }
-  
-  
-  #login-popup #signup-btn {
+}
+
+
+#login-popup #signup-btn {
   background-color: #4caf50;
   color: white;
-  }
-  
-  
-  #login-popup #signup-btn:hover {
+}
+
+
+#login-popup #signup-btn:hover {
   background-color: #388e3c;
   transform: scale(1.05);
-  }
-  
-  
-  #login-popup #signout-btn {
+}
+
+
+#login-popup #signout-btn {
   background-color: #e63946;
   color: white;
-  }
-  
-  
-  #login-popup #signout-btn:hover {
+}
+
+
+#login-popup #signout-btn:hover {
   background-color: #a0212f;
   transform: scale(1.05);
-  }
-  
-  
-  /* Close Button */
-  #close-login-popup {
+}
+
+
+/* Close Button */
+#close-login-popup {
   background-color: #e63946;
   color: white;
   padding: 8px 12px;
@@ -561,509 +563,516 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  }
-  
-  
-  #close-login-popup:hover {
+}
+
+
+#close-login-popup:hover {
   background-color: #a0212f;
-  }
-  
-  
-  /* Error Message */
-  #login-error-message {
+}
+
+
+/* Error Message */
+#login-error-message {
   color: #e63946;
   font-size: 14px;
   margin-top: 10px;
   display: none; /* Hidden by default */
-  }
-  
-  .separator-line {
-      border: none;
-      border-top: 3px solid #73a4ff;
-      margin: 5px auto;
-      width: 95%;
-  }
-  
-          .agent-row {
-      border: none;
-      border-top: 3px solid #73a4ff;
-      margin: 5px auto;
-      width: 95%;
-  }
-  
-  .resizable-table {
-      width: 95%;
-      table-layout: fixed;
-      border-collapse: collapse;
-      border: 1px solid #000;
-      margin: 20px auto;
-      table-layout: fixed;
-  }
-  
-  
-  
-  th, td {
-  text-align: right; /* Alignment */
-  border: 1px solid #6d6d6d;
-  word-wrap: break-word;
-  font-family: Arial, Helvetica, sans-serif;
-  white-space: normal;
-  overflow: hidden;
-  padding: 2px 4px; 
-  min-height: 20px; 
-  height: 20px; 
-  font-size: 13px;
-  line-height: 1.1;
-  }
-  
-  th {
-  text-align: center; 
-  border: 1px solid #6d6d6d;
-  padding: 4px 6px;
-  font-size: 14px; 
-  line-height: 1.4;
-  background-color: #73a4ff; 
-  color: white; 
-  }
-  
-  
-  tr:nth-child(even) {
-      background-color: #dadada;
-  }
-  
-  
-  
-  .font-size-display {
-      text-align: center;
-      margin-top: 5px;
-      font-size: 14px;
-      font-weight: bold;
-      color: #555;
-  }
-  
-  
-  
-  #calculate-button, #calculate-total {
-      background-color: #73a4ff;
-      color: white;
-      font-size: 16px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 20px auto;
-      display: block;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease-in-out;
-  }
-  
-  #calculate-button:hover, #calculate-total:hover {
-      background-color: #315f80;
-      transform: scale(1.05);
-      box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
-  }
-  
-  #calculate-button:active, #calculate-total:active {
-      transform: scale(1);
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  }
-  @media print { 
-     #calculate-total {
-      display: none;
-     }
-  }
-  
-  /* Executive Badge Container */
-  .total-section {
-  width: 40%;
-  margin: 30px auto;
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  overflow: hidden;
-  }
-  
-  /* Elegant Hover Effect */
-  .total-section:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-  }
-  
-  /* Decorative Gradient Bar */
-  .total-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(to right, #407bff, #73a4ff);
-  }
-  
-  /* Header - Executive Style */
-  .total-header {
-  font-size: 18px;
-  font-weight: 600;
-  color: #2c3e50;
-  text-align: center;
-  width: 100%;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Structured Input Section */
-  .total-body {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  padding: 20px 0;
-  }
-  
-  /* Wider & Sleek Input Fields */
-  .total-column input {
-  background: rgba(240, 243, 255, 0.85);
-  width: 180px;  /* Increased width */
-  padding: 12px; /* Balanced padding */
-  text-align: center;
-  border: 1px solid #bbb;
-  border-radius: 10px;
-  font-size: 16px; /* Slightly smaller font */
-  font-weight: 500;
-  color: #2c3e50;
-  outline: none;
-  transition: all 0.3s ease-in-out;
-  }
-  
-  /* Input Focus Effect */
-  .total-column input:focus {
-  border-color: #407bff;
-  box-shadow: 0 0 10px rgba(64, 123, 255, 0.4);
-  }
-  
-  /* Mobile Optimization */
-  @media (max-width: 768px) {
-  .total-section {
-  width: 80%;
-  padding: 20px;
-  }
-  .total-body {
-  gap: 10px;
-  }
-  .total-column input {
-  width: 160px; /* Adjusted for mobile */
-  font-size: 15px;
-  }
-  }
-  
-  
-  
-  .slider-container {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  }
-  
-  
-  @media print { 
-     #add-row-button {
-      display: none;
-     }
-  }
-  
-  @media print { 
-     #remove-row-button {
-      display: none;
-     }
-  }
-  
-  /* Footer Section */
-  
-  
-  .slider-container label {
-  width: 20%;
-  text-align: left;
-  font-weight: bold;
-  }
-  
-  .slider-container input[type="range"] {
-  width: 60%;
-  }
-  
-  .slider-value {
-  width: 20%;
-  text-align: right;
-  }
-  
-  #reset-columns {
-  background-color: #73a4ff;
-  color: white;
-  font-size: 14px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
-  }
-  
-  #reset-columns:hover {
-  background-color: #73a4ff;
-  transform: scale(1.05);
-  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Hide Resizing Tool During Print */
-  @media print {
-  #resize-columns-button,.slider-container,#resizing-tool,  .slider-container label,#resizing-tool h3, #reset-columns
-  {
-  display: none !important;
-  }
-  }
-  
-  .editor-popup {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background-color: #f9f9f9;border: 2px solid #73a4ff;border-radius: 10px;padding: 20px;z-index: 1000;display: none;width: 400px;box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .resizable-table th:first-child,
-  .resizable-table td:first-child {
-  width: 50px; /* Adjust as needed */
-  max-width: 70px; /* Optional: to ensure no extreme resizing */
-  text-align: center; /* Optional: for better alignment */
-  }
-  
-  @media print {
-  #add-column-button,
-  #remove-column-button {
-  display: none;
-  }
-  }
-  
-  /* Parent container for centering */
-  .center-container {
-  display: flex; /* Enables flexbox for centering */
-  justify-content: center; /* Centers horizontally */
-  margin: 10px 0; /* Adds spacing between header and table */
-  }
-  
-  /* Oval styling */
-  .editable-oval {
-  display: inline-block; /* Keep it dynamically sized */
-  text-align: center;
-  font-weight: bold;/* Centers text inside the oval */
-  padding: 10px 20px; /* Inner spacing for oval shape */
-  border: 2px solid #73a4ff; /* Border color */
-  border-radius: 50px; /* Creates the oval shape */
-  font-size: 16px; /* Text size */
-  color: #000; /* Text color */
-  background-color: transparent; /* Transparent background */
-  outline: none; /* Removes focus outline */
-  cursor: text; /* Shows text-editing cursor */
-  }
-  
-  
-  /* Popup Container - Modern Design */
-  .popup-container {
-  display: none; /* Initially hidden */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Dim background with a soft black overlay */
-  z-index: 9999; /* On top of everything */
-  backdrop-filter: blur(5px); /* Adds a subtle blur effect to the background */
-  }
-  
-  /* Popup Content */
-  /* Popup Content (Scrollable Area) */
-  .popup-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  width: 400px;
-  max-height: 80vh; /* Limit the popup height to 80% of the viewport */
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
-  box-sizing: border-box; /* Ensure padding is included in the dimensions */
-  }
-  .popup-content::-webkit-scrollbar {
-  width: 8px;
-  }
-  
-  .popup-content::-webkit-scrollbar-thumb {
-  background-color: #73a4ff;
-  border-radius: 4px;
-  }
-  
-  .popup-content::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-  }
-  
-  /* Popup Title */
-  .popup-content h3 {
-  font-size: 24px; /* Larger font size for the title */
-  font-weight: bold;
-  color: #333333; /* Dark gray text */
-  margin-bottom: 20px; /* Space below the title */
-  border-bottom: 2px solid #73a4ff; /* Blue underline */
-  padding-bottom: 10px;
-  }
-  
-  /* Buttons Container */
-  .popup-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px; /* Spacing between buttons */
-  justify-content: center;
-  margin-bottom: 20px;
-  }
-  
-  /* Agent Buttons */
-  .agent-button {
-  background-color: #73a4ff; /* Primary blue color */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px; /* Smooth rounded corners */
-  cursor: pointer;
-  font-size: 14px; /* Medium font size */
-  font-weight: bold;
-  transition: all 0.3s ease; /* Smooth hover effect */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  }
-  
-  .agent-button:hover {
-  background-color: #315f80; /* Darker blue on hover */
-  transform: translateY(-3px); /* Lifts the button */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-  }
-  
-  /* Close Button */
-  #close-popup {
-  background-color: #e63946; /* Red for the close button */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px; /* Rounded corners */
-  cursor: pointer;
-  font-size: 14px; /* Medium font size */
-  font-weight: bold;
-  transition: all 0.3s ease; /* Smooth hover effect */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  }
-  
-  #close-popup:hover {
-  background-color: #a0212f; /* Darker red on hover */
-  transform: translateY(-3px); /* Lifts the button */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-  }
-  
-  /* Saved Files Entry */
-  .saved-file-entry {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  border-radius: 10px; /* Rounded corners */
-  background-color: #f9f9f9; /* Light gray background */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  margin-bottom: 15px; /* Spacing between entries */
-  font-size: 14px; /* Medium font size */
-  font-weight: bold;
-  }
-  
-  /* Load Button */
-  .saved-file-entry .load-button {
-  background-color: #73a4ff; /* Primary blue */
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 12px; /* Slightly smaller font */
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  }
-  
-  .saved-file-entry .load-button:hover {
-  background-color: #315f80;
-  transform: scale(1.05); /* Slightly enlarges */
-  }
-  
-  /* Delete Button */
-  .saved-file-entry .delete-button {
-  background-color: #e63946; /* Red color */
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  }
-  
-  .saved-file-entry .delete-button:hover {
-  background-color: #a0212f; /* Darker red on hover */
-  transform: scale(1.05); /* Slightly enlarges */
-  }
-  
-  /* Responsiveness */
-  @media (max-width: 600px) {
-  .popup-content {
-  width: 90%;
-  padding: 20px;
-  }
-  
-  .popup-content h3 {
-  font-size: 20px;
-  }
-  
-  .agent-button, #close-popup {
-  font-size: 12px;
-  padding: 8px 15px;
-  }
-  }
-  
-  .resizable-table thead th {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  font-size: 20px;
-  background-color: #73a4ff; /* Blue header */
-  color: white;
-  border-bottom: 2px solid #73a4ff;
-  }
-  
-  .resizable-table th {
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  }
-  
-  
-  #close-popup:hover {
-  background-color: #a0212f;
-  }
-  
-  /* Floating Button Styles */
-  .floating-button {
+}
+
+        .separator-line {
+            border: none;
+            border-top: 3px solid #73a4ff;
+            margin: 5px auto;
+            width: 95%;
+        }
+        
+                .agent-row {
+            border: none;
+            border-top: 3px solid #73a4ff;
+            margin: 5px auto;
+            width: 95%;
+        }
+
+        .resizable-table {
+            width: 95%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1px solid #000;
+            margin: 20px auto;
+            table-layout: fixed;
+        }
+
+        
+
+        th, td {
+    text-align: right; /* Alignment */
+    border: 1px solid #6d6d6d;
+    word-wrap: break-word;
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: normal;
+    overflow: hidden;
+    padding: 2px 4px; 
+    min-height: 20px; 
+    height: 20px; 
+    font-size: 13px;
+    line-height: 1.1;
+}
+
+th {
+    text-align: center; 
+    border: 1px solid #6d6d6d;
+    padding: 4px 6px;
+    font-size: 14px; 
+    line-height: 1.4;
+    background-color: #73a4ff; 
+    color: white; 
+}
+
+
+        tr:nth-child(even) {
+            background-color: #dadada;
+        }
+
+
+
+        .font-size-display {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+
+
+
+        #calculate-button, #calculate-total {
+            background-color: #73a4ff;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
+        #calculate-button:hover, #calculate-total:hover {
+            background-color: #315f80;
+            transform: scale(1.05);
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        #calculate-button:active, #calculate-total:active {
+            transform: scale(1);
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        @media print { 
+           #calculate-total {
+            display: none;
+           }
+        }
+
+       /* Executive Badge Container */
+.total-section {
+    width: 40%;
+    margin: 30px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Elegant Hover Effect */
+.total-section:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Decorative Gradient Bar */
+@media print {
+    .total-section::before {
+        background: linear-gradient(to right, #407bff, #73a4ff); /* This may not print */
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+    }
+
+    /* Fallback for printing */
+    .total-section {
+        border-top: 5px solid #407bff; /* Solid color fallback */
+    }
+}
+
+/* Header - Executive Style */
+.total-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Structured Input Section */
+.total-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Wider & Sleek Input Fields */
+.total-column input {
+    background: rgba(240, 243, 255, 0.85);
+    width: 180px;  /* Increased width */
+    padding: 12px; /* Balanced padding */
+    text-align: center;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    font-size: 16px; /* Slightly smaller font */
+    font-weight: 500;
+    color: #2c3e50;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input Focus Effect */
+.total-column input:focus {
+    border-color: #407bff;
+    box-shadow: 0 0 10px rgba(64, 123, 255, 0.4);
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .total-section {
+        width: 80%;
+        padding: 20px;
+    }
+    .total-body {
+        gap: 10px;
+    }
+    .total-column input {
+        width: 160px; /* Adjusted for mobile */
+        font-size: 15px;
+    }
+}
+
+
+
+.slider-container {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+        @media print { 
+           #add-row-button {
+            display: none;
+           }
+        }
+
+        @media print { 
+           #remove-row-button {
+            display: none;
+           }
+        }
+
+/* Footer Section */
+
+
+.slider-container label {
+    width: 20%;
+    text-align: left;
+    font-weight: bold;
+}
+
+.slider-container input[type="range"] {
+    width: 60%;
+}
+
+.slider-value {
+    width: 20%;
+    text-align: right;
+}
+
+#reset-columns {
+    background-color: #73a4ff;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+#reset-columns:hover {
+    background-color: #73a4ff;
+    transform: scale(1.05);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Hide Resizing Tool During Print */
+@media print {
+    #resize-columns-button,.slider-container,#resizing-tool,  .slider-container label,#resizing-tool h3, #reset-columns
+    {
+        display: none !important;
+    }
+}
+
+.editor-popup {position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);background-color: #f9f9f9;border: 2px solid #73a4ff;border-radius: 10px;padding: 20px;z-index: 1000;display: none;width: 400px;box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+.resizable-table th:first-child,
+.resizable-table td:first-child {
+    width: 50px; /* Adjust as needed */
+    max-width: 70px; /* Optional: to ensure no extreme resizing */
+    text-align: center; /* Optional: for better alignment */
+}
+
+@media print {
+    #add-column-button,
+    #remove-column-button {
+        display: none;
+    }
+}
+
+/* Parent container for centering */
+.center-container {
+    display: flex; /* Enables flexbox for centering */
+    justify-content: center; /* Centers horizontally */
+    margin: 10px 0; /* Adds spacing between header and table */
+}
+
+/* Oval styling */
+.editable-oval {
+    display: inline-block; /* Keep it dynamically sized */
+    text-align: center;
+    font-weight: bold;/* Centers text inside the oval */
+    padding: 10px 20px; /* Inner spacing for oval shape */
+    border: 2px solid #73a4ff; /* Border color */
+    border-radius: 50px; /* Creates the oval shape */
+    font-size: 16px; /* Text size */
+    color: #000; /* Text color */
+    background-color: transparent; /* Transparent background */
+    outline: none; /* Removes focus outline */
+    cursor: text; /* Shows text-editing cursor */
+}
+
+
+/* Popup Container - Modern Design */
+.popup-container {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dim background with a soft black overlay */
+    z-index: 9999; /* On top of everything */
+    backdrop-filter: blur(5px); /* Adds a subtle blur effect to the background */
+}
+
+/* Popup Content */
+/* Popup Content (Scrollable Area) */
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-height: 80vh; /* Limit the popup height to 80% of the viewport */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    box-sizing: border-box; /* Ensure padding is included in the dimensions */
+}
+.popup-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background-color: #73a4ff;
+    border-radius: 4px;
+}
+
+.popup-content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+/* Popup Title */
+.popup-content h3 {
+    font-size: 24px; /* Larger font size for the title */
+    font-weight: bold;
+    color: #333333; /* Dark gray text */
+    margin-bottom: 20px; /* Space below the title */
+    border-bottom: 2px solid #73a4ff; /* Blue underline */
+    padding-bottom: 10px;
+}
+
+/* Buttons Container */
+.popup-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Spacing between buttons */
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Agent Buttons */
+.agent-button {
+    background-color: #73a4ff; /* Primary blue color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px; /* Smooth rounded corners */
+    cursor: pointer;
+    font-size: 14px; /* Medium font size */
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.agent-button:hover {
+    background-color: #315f80; /* Darker blue on hover */
+    transform: translateY(-3px); /* Lifts the button */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Close Button */
+#close-popup {
+    background-color: #e63946; /* Red for the close button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 14px; /* Medium font size */
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+#close-popup:hover {
+    background-color: #a0212f; /* Darker red on hover */
+    transform: translateY(-3px); /* Lifts the button */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Saved Files Entry */
+.saved-file-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light gray background */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 15px; /* Spacing between entries */
+    font-size: 14px; /* Medium font size */
+    font-weight: bold;
+}
+
+/* Load Button */
+.saved-file-entry .load-button {
+    background-color: #73a4ff; /* Primary blue */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px; /* Slightly smaller font */
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.saved-file-entry .load-button:hover {
+    background-color: #315f80;
+    transform: scale(1.05); /* Slightly enlarges */
+}
+
+/* Delete Button */
+.saved-file-entry .delete-button {
+    background-color: #e63946; /* Red color */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.saved-file-entry .delete-button:hover {
+    background-color: #a0212f; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly enlarges */
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .popup-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .popup-content h3 {
+        font-size: 20px;
+    }
+
+    .agent-button, #close-popup {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+}
+
+.resizable-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    font-size: 20px;
+    background-color: #73a4ff; /* Blue header */
+    color: white;
+    border-bottom: 2px solid #73a4ff;
+}
+
+.resizable-table th {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+#close-popup:hover {
+    background-color: #a0212f;
+}
+
+/* Floating Button Styles */
+.floating-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -1078,183 +1087,182 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   z-index: 999; /* Ensure it appears above other elements */
-  }
-  
-  /* Hover Effect */
-  .floating-button:hover {
+}
+
+/* Hover Effect */
+.floating-button:hover {
   background-color: #315f80; /* Darker blue on hover */
   transform: scale(1.1); /* Slightly enlarge */
-  }
-  
-  /* Hidden During Print */
-  @media print {
-  .floating-button {
-  display: none;
-  }
-  }
-  
-  
-  /* Popup Styles */
-  
-  
-  .close-button {
-  background-color: #e63946;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  }
-  
-  
-  .close-button:hover {
-  background-color: #a0212f;
-  }
-  
-  
-  /* Saved File Entry */
-  .saved-file-entry {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  }
-  
-  
-  .saved-file-entry button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  }
-  
-  
-  .saved-file-entry button.load-button {
-  background-color: #73a4ff;
-  color: white;
-  }
-  
-  
-  .saved-file-entry button.load-button:hover {
-  background-color: #315f80;
-  }
-  
-  
-  .saved-file-entry button.delete-button {
-  background-color: #e63946;
-  color: white;
-  }
-  
-  
-  .saved-file-entry button.delete-button:hover {
-  background-color: #a0212f;
-  }
-  
-  @keyframes row-highlight {
-  from {
-  background-color: #ffffcc;
-  }
-  to {
-  background-color: transparent;
-  }
-  }
-  
-  .resizable-table tbody tr.added {
-  animation: row-highlight 1.5s ease-out;
-  }
-  
-  /* Oval Button Design */
-  #agent-selector {
-  display: inline-block;
-  padding: 12px 30px; /* Adds spacious padding */
-  border: 2px solid #73a4ff; /* Elegant blue border */
-  border-radius: 50px; /* Makes it oval-shaped */
-  font-size: 16px; /* Clean and modern font size */
-  font-weight: bold; /* Bold text for emphasis */
-  color: #315f80; /* Elegant dark blue text */
-  background: #ffffff; /* White background for a classy look */
-  text-align: center; /* Centers the text */
-  text-transform: capitalize; /* Capitalizes text */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  cursor: pointer; /* Indicates interactivity */
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
-  }
-  
-  /* Hover Effect */
-  #agent-selector:hover {
-  background: #f9f9f9; /* Slightly darker white on hover */
-  border-color: #315f80; /* Darker border on hover */
-  color: #73a4ff; /* Lighter blue text */
-  transform: scale(1.05); /* Slight enlargement */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
-  }
-  
-  /* Active State */
-  #agent-selector:active {
-  transform: scale(0.98); /* Slight press-in effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reduced shadow */
-  }
-  
-  /* Focus State for Accessibility */
-  #agent-selector:focus {
-  outline: none; /* Removes default outline */
-  box-shadow: 0 0 0 4px rgba(115, 164, 255, 0.5); /* Elegant focus ring */
-  }
-  
-  
-  /* Saved Files List with Scroll Bar */
-  /* Saved Files List with Scrolling */
-  .saved-files-list {
-  max-height: 300px; /* Limits the height of the list */
-  overflow-y: auto; /* Enables vertical scrolling */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  width: 100%; /* Ensure it spans the popup width */
-  box-sizing: border-box; /* Include padding in width */
-  }
-  
-  /* Scrollbar Styles */
-  .saved-files-list::-webkit-scrollbar {
-  width: 8px;
-  }
-  
-  .saved-files-list::-webkit-scrollbar-thumb {
-  background-color: #73a4ff;
-  border-radius: 4px;
-  }
-  
-  .saved-files-list::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-  }
-  
-  
-  /* Floating Buttons (Applies to Both Buttons) */
-  
-  
-  @media print {.floating-button,.export-button,.highlighted,.btn-xtr-enable-as,.btn-xtr-save-table, .popup-container {
-  display: none !important;
-  }
-  }
-  @media print {
-  thead {
-  background-color: #73a4ff !important;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-  color: white;
-  }
-  }
-  
-  </style>
+}
 
-  </head>
+/* Hidden During Print */
+@media print {
+  .floating-button {
+    display: none;
+  }
+}
+
+
+/* Popup Styles */
+
+
+.close-button {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+.close-button:hover {
+    background-color: #a0212f;
+}
+
+
+/* Saved File Entry */
+.saved-file-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+.saved-file-entry button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.saved-file-entry button.load-button {
+    background-color: #73a4ff;
+    color: white;
+}
+
+
+.saved-file-entry button.load-button:hover {
+    background-color: #315f80;
+}
+
+
+.saved-file-entry button.delete-button {
+    background-color: #e63946;
+    color: white;
+}
+
+
+.saved-file-entry button.delete-button:hover {
+    background-color: #a0212f;
+}
+
+@keyframes row-highlight {
+    from {
+        background-color: #ffffcc;
+    }
+    to {
+        background-color: transparent;
+    }
+}
+
+.resizable-table tbody tr.added {
+    animation: row-highlight 1.5s ease-out;
+}
+
+/* Oval Button Design */
+#agent-selector {
+    display: inline-block;
+    padding: 12px 30px; /* Adds spacious padding */
+    border: 2px solid #73a4ff; /* Elegant blue border */
+    border-radius: 50px; /* Makes it oval-shaped */
+    font-size: 16px; /* Clean and modern font size */
+    font-weight: bold; /* Bold text for emphasis */
+    color: #315f80; /* Elegant dark blue text */
+    background: #ffffff; /* White background for a classy look */
+    text-align: center; /* Centers the text */
+    text-transform: capitalize; /* Capitalizes text */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    cursor: pointer; /* Indicates interactivity */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover Effect */
+#agent-selector:hover {
+    background: #f9f9f9; /* Slightly darker white on hover */
+    border-color: #315f80; /* Darker border on hover */
+    color: #73a4ff; /* Lighter blue text */
+    transform: scale(1.05); /* Slight enlargement */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+/* Active State */
+#agent-selector:active {
+    transform: scale(0.98); /* Slight press-in effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+}
+
+/* Focus State for Accessibility */
+#agent-selector:focus {
+    outline: none; /* Removes default outline */
+    box-shadow: 0 0 0 4px rgba(115, 164, 255, 0.5); /* Elegant focus ring */
+}
+
+
+/* Saved Files List with Scroll Bar */
+/* Saved Files List with Scrolling */
+.saved-files-list {
+    max-height: 300px; /* Limits the height of the list */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 100%; /* Ensure it spans the popup width */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Scrollbar Styles */
+.saved-files-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.saved-files-list::-webkit-scrollbar-thumb {
+    background-color: #73a4ff;
+    border-radius: 4px;
+}
+
+.saved-files-list::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+
+/* Floating Buttons (Applies to Both Buttons) */
+
+
+@media print {.floating-button,.export-button,.highlighted,.btn-xtr-enable-as,.btn-xtr-save-table, .popup-container {
+        display: none !important;
+    }
+}
+@media print {
+    thead {
+        background-color: #73a4ff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color: white;
+    }
+}
+
+    </style>
+</head>
 <body>
   
   <div class="position-fixed top-0 start-0 p-3" style="z-index: 1050;">
@@ -1617,11 +1625,1850 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+      function showToast(message) {
+    const toastEl = document.getElementById('customToast');
+    const toastBody = document.getElementById('toastMessage');
+
+
+    toastBody.innerText = message;
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show();
+}
+
+let activeCell;  // To store the currently clicked cell
+
+
+// Log when the script starts
+console.log("Script Loaded and Running");
+
+
+document.querySelectorAll("td:nth-child(5)").forEach((cell, index) => {
+    console.log(`Adding event listener to cell ${index + 1}`);
+    
+    // Change to dblclick event
+    cell.addEventListener("dblclick", function() {
+        console.log("Date cell double-clicked!");
+
+
+        activeCell = cell;  // Store the clicked cell
+        const currentDate = activeCell.textContent.trim(); // Get the current date from the cell
+        console.log("Current Date in Cell: ", currentDate);
+
+
+        const [day, month] = currentDate.split('/'); // Extract day and month
+        console.log("Extracted Day: ", day, "Extracted Month: ", month);
+
+
+        // Set the day and month values in the select elements
+        document.getElementById("select-day").value = day || "01"; // Default to "01" if no day is present
+        document.getElementById("select-month").value = month || "01"; // Default to "01" if no month is present
+
+
+        // Show the popup
+        document.getElementById("date-popup").style.display = "flex"; 
+        console.log("Popup should be displayed now.");
+    });
+});
+
+
+// Save Date Button: Update the cell with the selected date
+document.getElementById("save-date").addEventListener("click", function() {
+    console.log("Save Date button clicked!");
+
+
+    const day = document.getElementById("select-day").value;
+    const month = document.getElementById("select-month").value;
+    const newDate = `${day}/${month}/2025`; // Format the new date with year 2025
+    console.log("New Date to Save: ", newDate);
+
+
+    if (activeCell) {
+        activeCell.textContent = newDate;  // Update the cell with the new date
+        console.log("Cell Updated with Date: ", newDate);
+    }
+
+
+    document.getElementById("date-popup").style.display = "none"; // Close the popup
+    console.log("Popup Closed");
+});
+
+
+// Cancel Button: Close the popup without saving
+document.getElementById("cancel-date").addEventListener("click", function() {
+    console.log("Cancel button clicked. Closing the popup without saving.");
+    document.getElementById("date-popup").style.display = "none"; // Close the popup
+});
+
+
+
+        let activeElement;
+        let originalText = "";
+        let originalFontSize = "";
+        let originalFontStyle = "";
+// Double-click to open the popup
+document.querySelectorAll("td, th").forEach(cell => {
+    cell.addEventListener("dblclick", () => {
+        activeElement = cell;
+        document.querySelector(".editor-popup").style.display = "block";
+
+        // Store original values
+        originalText = cell.textContent;
+        originalFontSize = parseInt(window.getComputedStyle(cell).fontSize, 10); // Ensure numeric font size
+        originalFontStyle = window.getComputedStyle(cell).fontStyle;
+
+        // Populate popup fields
+        document.getElementById("cell-text").value = originalText;
+        document.getElementById("font-slider").value = originalFontSize;
+        document.getElementById("font-style").value = originalFontStyle;
+        document.getElementById("font-size-display").textContent = `${originalFontSize}px`;
+
+        // Populate preview
+        updateLivePreview();
+    });
+});
+
+// Update preview text dynamically and synchronize slider
+document.getElementById("cell-text").addEventListener("input", updateLivePreview);
+document.getElementById("font-slider").addEventListener("input", (e) => {
+    const fontSize = e.target.value;
+    document.getElementById("font-size-display").textContent = `${fontSize}px`;
+
+    // Apply the font size to the active element in real-time
+    if (activeElement) {
+        activeElement.style.fontSize = `${fontSize}px`;
+    }
+});
+document.getElementById("font-style").addEventListener("change", updateLivePreview);
+
+// Synchronize font size display on popup close or save
+function updateLivePreview() {
+    const preview = document.getElementById("preview-text");
+    const fontSize = document.getElementById("font-slider").value;
+    preview.textContent = document.getElementById("cell-text").value;
+    preview.style.fontSize = `${fontSize}px`;
+    preview.style.fontStyle = document.getElementById("font-style").value;
+
+    // Update slider value display dynamically
+    document.getElementById("font-size-display").textContent = `${fontSize}px`;
+}
+
+// Save changes
+document.getElementById("save-edit").addEventListener("click", () => {
+    const newText = document.getElementById("cell-text").value;
+    const newFontSize = document.getElementById("font-slider").value + "px";
+    const newFontStyle = document.getElementById("font-style").value;
+
+    // Apply changes to the active element
+    if (activeElement) {
+        activeElement.textContent = newText;
+        activeElement.style.fontSize = newFontSize;
+        activeElement.style.fontStyle = newFontStyle;
+    }
+
+    closePopup();
+});
+
+// Cancel editing
+document.getElementById("cancel-edit").addEventListener("click", closePopup);
+
+// Reset changes
+document.getElementById("reset-edit").addEventListener("click", () => {
+    document.getElementById("cell-text").value = originalText;
+    document.getElementById("font-slider").value = originalFontSize;
+    document.getElementById("font-style").value = originalFontStyle;
+    document.getElementById("font-size-display").textContent = `${originalFontSize}px`;
+    updateLivePreview();
+});
+
+function closePopup() {
+    document.querySelector(".editor-popup").style.display = "none";
+}
+
+        // Cancel editing
+        document.getElementById("cancel-edit").addEventListener("click", closePopup);
+
+        // Reset changes
+        document.getElementById("reset-edit").addEventListener("click", () => {
+            document.getElementById("cell-text").value = originalText;
+            document.getElementById("font-slider").value = originalFontSize;
+            document.getElementById("font-style").value = originalFontStyle;
+            document.getElementById("font-size-display").textContent = originalFontSize + "px";
+            updateLivePreview();
+        });
+
+                function closePopup() {
+            document.querySelector(".editor-popup").style.display = "none";
+        }
+
+        // Handle Resize Columns Button
+document.getElementById("resize-columns-button").addEventListener("click", () => {
+    const resizingTool = document.getElementById("resizing-tool");
+    if (resizingTool.style.display === "none") {
+        generateSliders();
+        resizingTool.style.display = "block";
+    } else {
+        resizingTool.style.display = "none";
+    }
+});
+
+function applyPopupToNewCells() {
+    // Reapply the double-click event listener to all table cells
+    document.querySelectorAll("td, th").forEach(cell => {
+        cell.removeEventListener("dblclick", handleCellDoubleClick); // Avoid duplicate listeners
+        cell.addEventListener("dblclick", handleCellDoubleClick);
+    });
+}
+
+
+    
+// Generate Sliders for Each Column
+// Generate Sliders for Each Column
+function generateSliders() {
+    const table = document.querySelector(".resizable-table");
+    const slidersContainer = document.getElementById("sliders-container");
+    slidersContainer.innerHTML = ""; // Clear previous sliders
+
+    const columns = table.querySelectorAll("th");
+    columns.forEach((column, index) => {
+        // Create slider container
+        const sliderContainer = document.createElement("div");
+        sliderContainer.className = "slider-container";
+
+        // Column label
+        const label = document.createElement("label");
+        label.textContent = `Column ${index + 1}`;
+
+        // Slider
+        const slider = document.createElement("input");
+        slider.type = "range";
+        slider.min = index === 0 ? "15" : "50"; // Smaller minimum for the first column
+        slider.max = index === 0 ? "200" : "500"; // Smaller maximum for the first column
+        slider.value = column.offsetWidth; // Set current width as default
+
+        // Slider value display
+        const valueDisplay = document.createElement("span");
+        valueDisplay.className = "slider-value";
+        valueDisplay.textContent = `${column.offsetWidth}px`;
+
+        // Update column width on slider input
+        slider.addEventListener("input", () => {
+            column.style.width = `${slider.value}px`;
+            table.querySelectorAll(`td:nth-child(${index + 1})`).forEach(cell => {
+                cell.style.width = `${slider.value}px`;
+            });
+            valueDisplay.textContent = `${slider.value}px`;
+        });
+
+        // Append elements to slider container
+        sliderContainer.appendChild(label);
+        sliderContainer.appendChild(slider);
+        sliderContainer.appendChild(valueDisplay);
+
+        // Append slider container to sliders container
+        slidersContainer.appendChild(sliderContainer);
+    });
+}
+
+function handleCellDoubleClick() {
+    activeElement = this; // Reference the clicked element
+    document.querySelector(".editor-popup").style.display = "block";
+
+    // Store original values
+    originalText = this.textContent;
+    originalFontSize = parseInt(window.getComputedStyle(this).fontSize, 10); // Ensure numeric font size
+    originalFontStyle = window.getComputedStyle(this).fontStyle;
+
+    // Populate popup fields
+    document.getElementById("cell-text").value = originalText;
+    document.getElementById("font-slider").value = originalFontSize;
+    document.getElementById("font-style").value = originalFontStyle;
+    document.getElementById("font-size-display").textContent = `${originalFontSize}px`;
+
+    updateLivePreview();
+}
+
+
+function applyDynamicFeatures() {
+    document.querySelectorAll("td, th").forEach(cell => {
+        cell.removeEventListener("dblclick", handleCellDoubleClick); // Avoid duplicates
+        cell.addEventListener("dblclick", handleCellDoubleClick); // Reapply popup listener
+    });
+}
+
+// Get references to elements
+const agentSelector = document.getElementById("agent-selector");
+const popupContainer = document.getElementById("agent-popup");
+const closePopupButton = document.getElementById("close-popup");
+const agentButtons = document.querySelectorAll(".agent-button");
+
+
+// Show the popup when clicking the oval text
+
+
+
+// Add a new column to the table
+document.getElementById("add-column-button").addEventListener("click", () => {
+    const table = document.querySelector(".resizable-table");
+    const rows = table.querySelectorAll("tr");
+
+    // Add a new header for the column
+    if (rows[0]) {
+        const headerCell = document.createElement("th");
+        headerCell.textContent = `New Column ${rows[0].children.length + 1}`;
+        rows[0].appendChild(headerCell);
+    }
+
+    // Add new cells to each row
+    rows.forEach((row, rowIndex) => {
+        if (rowIndex === 0) return; // Skip header row
+        const newCell = document.createElement("td");
+        newCell.contentEditable = true; // Make it editable
+        newCell.textContent = ""; // Default content
+        row.appendChild(newCell);
+    });
+
+    // Reapply popup functionality for all cells
+    applyPopupToNewCells();
+});
+
+// Remove the last column from the table
+document.getElementById("remove-column-button").addEventListener("click", () => {
+    const table = document.querySelector(".resizable-table");
+    const rows = table.querySelectorAll("tr");
+
+    if (rows[0] && rows[0].children.length > 1) {
+        rows.forEach(row => {
+            row.removeChild(row.lastElementChild);
+        });
+
+        // Reapply features to remaining cells
+        applyDynamicFeatures();
+    } else {
+        showToast("No columns left to remove!");
+    }
+});
+applyDynamicFeatures();
+
+// Reset Columns to Default Widths
+document.getElementById("reset-columns").addEventListener("click", () => {
+    const table = document.querySelector(".resizable-table");
+    const columns = table.querySelectorAll("th");
+
+    columns.forEach((column, index) => {
+        column.style.width = ""; // Reset to default
+        table.querySelectorAll(`td:nth-child(${index + 1})`).forEach(cell => {
+            cell.style.width = ""; // Reset cells too
+        });
+    });
+
+    // Regenerate sliders to reflect reset widths
+    generateSliders();
+});
+
+// Add a new row to the table
+document.getElementById("add-row-button").addEventListener("click", () => {
+    
+})
+ 
+
+// Remove the last row from the table
+document.getElementById("remove-row-button").addEventListener("click", () => {
+
+});
+
+
+
+// Global Variables
+const savedTablesKey = "savedTables"; // LocalStorage key for saved tables
+const savedFilesList = document.getElementById("saved-files-list");
+
+// Save Table Functionality with Validation for Agent Selection
+// Save Table Functionality with Correct Data Structure
+function saveTable() {
+    const table = document.querySelector(".resizable-table");
+    const headers = Array.from(table.querySelectorAll("thead th")).map((th) => th.textContent);
+    const rows = Array.from(table.querySelectorAll("tbody tr")).map((row) =>
+        Array.from(row.cells).map((cell) => ({
+            content: cell.textContent,
+            styles: {
+                fontSize: cell.style.fontSize || "",
+                fontStyle: cell.style.fontStyle || "",
+                width: cell.style.width || "",
+            },
+        }))
+    );
+
+
+    // Get totals
+    const totalDebit = document.getElementById("total-debit").value || "0.00";
+    const totalCredit = document.getElementById("total-credit").value || "0.00";
+    const totalBalance = document.getElementById("total-balance").value || "0.00";
+
+
+    // Check if an agent is selected
+    const agentName = document.getElementById("agent-selector").textContent.trim();
+    if (agentName === "Select Agent") {
+        showToast("Please select an agent before saving the table.");
+        return;
+    }
+
+
+    const savedTables = JSON.parse(localStorage.getItem("savedTables")) || [];
+    const firstName = agentName.split(" - ")[0]; // Extract first name from "Full Name - Location"
+
+
+    const existingIndex = savedTables.findIndex((entry) => entry.agentName === firstName);
+
+
+    const newTableData = {
+        fullAgentName: agentName, // Save the full agent name for later display
+        agentName: firstName, // Save only the first name for the saved files list
+        headers,
+        rows,
+        totalRow: { totalDebit, totalCredit, totalBalance },
+        timestamp: new Date().toLocaleString(),
+    };
+
+
+    if (existingIndex !== -1) {
+        savedTables[existingIndex] = newTableData;
+    } else {
+        savedTables.push(newTableData);
+    }
+
+
+    localStorage.setItem("savedTables", JSON.stringify(savedTables));
+    loadSavedTables();
+
+
+    showToast(`Table for agent "${firstName}" has been saved successfully.`);
+}
+
+
+// Load Saved Files List (Existing Function)
+
+function loadSavedTables() {
+    const savedTablesKey = "savedTables";
+    const savedTables = JSON.parse(localStorage.getItem(savedTablesKey)) || [];
+    const savedFilesList = document.getElementById("saved-files-list");
+    savedFilesList.innerHTML = ""; // Clear the list
+
+
+    // If no saved tables, display a message
+    if (savedTables.length === 0) {
+        savedFilesList.innerHTML = "<p>No saved files found.</p>";
+        return;
+    }
+
+
+    // Loop through saved tables and render each
+    savedTables.forEach((table, index) => {
+        const fileEntry = document.createElement("div");
+        fileEntry.className = "saved-file-entry";
+        fileEntry.innerHTML = `
+            <p><strong>${table.agentName}</strong> (Saved on: ${table.timestamp || "No Date"})</p>
+            <button class="load-button" onclick="loadTable(${index})">Load</button>
+            <button class="delete-button" onclick="deleteTable(${index})">Delete</button>
+        `;
+        savedFilesList.appendChild(fileEntry);
+    });
+}
+
+
+
+// Load a Specific Table by Index, Including Total Row and Agent Name
+function loadTable(index) {
+    const savedTables = JSON.parse(localStorage.getItem("savedTables")) || [];
+    if (index < 0 || index >= savedTables.length) {
+        showToast("Invalid table index. Failed to load table.");
+        return;
+    }
+
+
+    const { rows, totalRow, fullAgentName } = savedTables[index];
+    const table = document.querySelector(".resizable-table");
+
+
+    // Clear the table body
+    const tableBody = table.querySelector("tbody");
+    tableBody.innerHTML = ""; // Remove all rows
+
+
+    // Recreate the rows
+    rows.forEach((rowData) => {
+        const row = document.createElement("tr");
+        rowData.forEach((cellData) => {
+            const cell = document.createElement("td");
+            cell.textContent = cellData.content;
+            Object.assign(cell.style, cellData.styles);
+            row.appendChild(cell);
+        });
+        tableBody.appendChild(row);
+    });
+
+
+    // Update totals only if totalRow exists
+    if (totalRow) {
+        document.getElementById("total-debit").value = totalRow.totalDebit || "0.00";
+        document.getElementById("total-credit").value = totalRow.totalCredit || "0.00";
+        document.getElementById("total-balance").value = totalRow.totalBalance || "0.00";
+    } else {
+        // Reset totals if not available
+        document.getElementById("total-debit").value = "0.00";
+        document.getElementById("total-credit").value = "0.00";
+        document.getElementById("total-balance").value = "0.00";
+    }
+
+
+    // Update agent selector with full name
+    document.getElementById("agent-selector").textContent = fullAgentName || "Select Agent";
+
+reinitializeFeatures();
+    showToast("Table loaded successfully!");
+}
+
+
+// Delete a Saved Table with Confirmation
+function deleteTable(index) {
+    const savedTables = JSON.parse(localStorage.getItem(savedTablesKey)) || [];
+    const confirmation = confirm("Are you sure you want to delete this saved table?");
+
+    if (confirmation) {
+        // If the user clicks "Yes," delete the table
+        savedTables.splice(index, 1);
+        localStorage.setItem(savedTablesKey, JSON.stringify(savedTables));
+        loadSavedTables(); // Refresh the list
+        showToast("Table deleted successfully!");
+    } else {
+        // If the user clicks "Cancel," do nothing
+       
+    }
+}
+
+
+// Reinitialize All Features After Loading
+function reinitializeFeatures() {
+    // Reapply Add/Remove Row and Column functionality
+    document.getElementById("add-row-button").onclick = addRow;
+    //document.getElementById("remove-row-button").onclick = removeRow;
+
+
+    // Reapply Calculate Totals functionality
+    document.getElementById("calculate-total").onclick = calculateTotals;
+
+
+    // Reapply Popup Editor functionality
+    applyPopupToNewCells();
+
+
+    // Reapply column resizing functionality
+    generateSliders();
+}
+
+
+// Add Row Functionality
+function addRow() {
+    const tableBody = document.querySelector(".resizable-table tbody");
+    const firstRow = tableBody.querySelector("tr");
+    const newRow = document.createElement("tr");
+  
+
+
+    // Create new cells for the new row
+    if (firstRow) {
+        const numColumns = firstRow.children.length; // Match the column count
+        for (let i = 0; i < numColumns; i++) {
+            const newCell = document.createElement("td");
+            newCell.contentEditable = true; // Make it editable
+            newCell.textContent = ""; // Default content
+            newRow.appendChild(newCell);
+            newCell.textContent = "";
+            newCell.contentEditable = true;
+            newRow.classList.add("added");
+            tableBody.appendChild(newRow);
+
+            setTimeout(() => newRow.classList.remove("added"), 1500);
+        }
+    }
+
+
+    tableBody.appendChild(newRow);
+
+
+    // Reapply popup functionality for all cells
+    applyPopupToNewCells();
+}
+
+
+// Remove Row Functionality
+function removeRow() {
+    const tableBody = document.querySelector(".resizable-table tbody");
+    const lastRow = tableBody.querySelector("tr:last-child");
+
+
+    if (lastRow) {
+        tableBody.removeChild(lastRow);
+
+
+        // Reapply popup functionality for remaining cells
+        applyPopupToNewCells();
+    } else {
+        showToast("No rows left to remove!");
+    }
+}
+
+
+
+// Calculate Totals Functionality
+function calculateTotals() {
+    const rows = document.querySelectorAll(".resizable-table tbody tr");
+    let totalDebit = 0;
+    let totalCredit = 0;
+
+
+    console.log("Calculate button clicked"); // Log when the button is clicked
+
+
+    // Loop through each row in the table
+    rows.forEach(row => {
+        const debitCell = row.children[1]; // 2nd child (مدين)
+        const creditCell = row.children[2]; // 3rd child (دائن)
+        const additionalCell = row.children[3]; // 4th child (نقل)
+        const balanceCell = row.children[6]; // Final child (الرصيد)
+
+
+        // Get numeric values from the cells
+        const debitValue = parseFloat(debitCell.textContent) || 0;
+        const creditValue = parseFloat(creditCell.textContent) || 0;
+        const additionalValue = parseFloat(additionalCell.textContent) || 0;
+
+
+        console.log(`Row - Debit: ${debitValue}, Credit: ${creditValue}, Additional: ${additionalValue}`); // Log each row's values
+
+
+        // Calculate balance
+        const totalCreditAndAdditional = creditValue + additionalValue;
+        const balance = debitValue - totalCreditAndAdditional;
+        balanceCell.textContent = balance.toFixed(2);
+
+
+        // Update totals
+        totalDebit += debitValue;
+        totalCredit += totalCreditAndAdditional;
+    });
+
+
+    console.log(`Total Debit: ${totalDebit}, Total Credit: ${totalCredit}, Total Balance: ${totalDebit - totalCredit}`); // Log final totals
+
+
+    // Update totals in the Total Section
+    document.getElementById("total-debit").value = totalDebit.toFixed(2);
+    document.getElementById("total-credit").value = totalCredit.toFixed(2);
+    document.getElementById("total-balance").value = (totalDebit - totalCredit).toFixed(2);
+}
+
+
+
+// Initialize Saved Files List on Page Load
+window.onload = loadSavedTables;
+
+
+// Add Save Button Event Listener
+//document.getElementById("save-table-button").addEventListener("click", saveTable);
+
+
+// Initialize Add/Remove Row Buttons
+document.getElementById("add-row-button").onclick = addRow;
+document.getElementById("remove-row-button").onclick = removeRow;
+
+
+// Initialize Calculate Button
+document.getElementById("calculate-total").onclick = calculateTotals;
+
+
+
+// Show/Hide Popup
+const showSavedFilesButton = document.getElementById("load-from-firestore-button");
+const savedFilesPopup = document.getElementById("firestore-popup");
+const closeSavedFilesButton = document.getElementById("close-saved-files");
+
+
+showSavedFilesButton.addEventListener("click", () => {
+    savedFilesPopup.style.display = "block";
+});
+
+
+closeSavedFilesButton.addEventListener("click", () => {
+    savedFilesPopup.style.display = "none";
+});
+
+
+savedFilesPopup.addEventListener("click", (e) => {
+    if (e.target === savedFilesPopup) {
+        savedFilesPopup.style.display = "none";
+    }
+});
+
+
+// Load Saved Tables into the Popup
+
+// Reinitialize Save Button and Load Tables on Page Load
+window.onload = () => {
+    loadSavedTables();
+    applyDynamicFeatures();
+};
+
+// Show/Hide Login Popup
+
+const closeLoginPopup = document.getElementById('close-login-popup');
+const loginPopupOverlay = document.getElementById("login-popup-overlay");
+
+// Show popup function
+function showLoginPopup() {
+  loginPopupOverlay.style.display = 'block';
+}
+
+
+// Close popup function
+function closeLoginPopupFunction() {
+  loginPopupOverlay.style.display = 'none';
+}
+
+
+// Event Listeners
+closeLoginPopup.addEventListener('click', closeLoginPopupFunction);
+loginPopupOverlay.addEventListener('click', (e) => {
+  if (e.target === loginPopupOverlay) {
+    closeLoginPopupFunction();
+  }
+});
+
+
+
+
+       // Calculate Totals Functionality
+// Calculate Totals Functionality
+function calculateTotals() {
+    const rows = document.querySelectorAll(".resizable-table tbody tr");
+    let totalDebit = 0;
+    let totalCredit = 0;
+
+
+    console.log("Calculate button clicked"); // Log when the button is clicked
+
+
+    // Loop through each row in the table
+    rows.forEach(row => {
+        const debitCell = row.children[1]; // 2nd child (مدين)
+        const creditCell = row.children[2]; // 3rd child (دائن)
+        const additionalCell = row.children[3]; // 4th child (نقل)
+        const balanceCell = row.children[6]; // Final child (الرصيد)
+
+
+        // Get numeric values from the cells
+        const debitValue = parseFloat(debitCell.textContent) || 0;
+        const creditValue = parseFloat(creditCell.textContent) || 0;
+        const additionalValue = parseFloat(additionalCell.textContent) || 0;
+
+
+        console.log(`Row - Debit: ${debitValue}, Credit: ${creditValue}, Additional: ${additionalValue}`); // Log each row's values
+
+
+        // Calculate balance
+        const totalCreditAndAdditional = creditValue + additionalValue;
+        const balance = debitValue - totalCreditAndAdditional;
+        balanceCell.textContent = balance.toFixed(2);
+
+
+        // Update totals
+        totalDebit += debitValue;
+        totalCredit += totalCreditAndAdditional;
+    });
+
+
+    console.log(`Total Debit: ${totalDebit}, Total Credit: ${totalCredit}, Total Balance: ${totalDebit - totalCredit}`); // Log final totals
+
+
+    // Update totals in the Total Section
+    document.getElementById("total-debit").value = totalDebit.toFixed(2);
+    document.getElementById("total-credit").value = totalCredit.toFixed(2);
+    document.getElementById("total-balance").value = (totalDebit - totalCredit).toFixed(2);
+}
+
+
+        // Reset totals
+        //document.getElementById("reset-total").addEventListener("click", () => {
+           // document.getElementById("total-debit").value = "0.00";
+          //  document.getElementById("total-credit").value = "0.00";
+           // document.getElementById("total-balance").value = "0.00";
+     //   });
+
+        
+        
+    </script>
     
 
 <!-- Saved Files Tab -->
-<script type="module" src="module.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+
+
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  writeBatch,
+  getDocs,
+  deleteDoc,
+  collection,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCxRpkI57dnQJtGZOzMSMTm8tl2qkU4lxY",
+  authDomain: "the-website-saves.firebaseapp.com",
+  projectId: "the-website-saves",
+  storageBucket: "the-website-saves.appspot.com",
+  messagingSenderId: "963337513800",
+  appId: "1:963337513800:web:a0503592a496bd9a89217d",
+};
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
+// DOM Elements
+const accountButton = document.getElementById("account-button");
+const signinButton = document.getElementById("signin-btn");
+const signupButton = document.getElementById("signup-btn");
+const signoutButton = document.getElementById("signout-btn");
+
+
+const closeLoginPopupButton = document.getElementById("close-login-popup");
+const saveToFirestoreButton = document.getElementById("save-table-2-button");
+const loadFirestorePopupButton = document.getElementById("load-from-firestore-button");
+const firestorePopup = document.getElementById("firestore-popup");
+const closeFirestorePopupButton = document.getElementById("close-firestore-popup");
+const firestoreTableList = document.getElementById("firestore-tables-list");
+
+
+// Account Button: Show Login Popup
+accountButton.addEventListener("click", () => {
+  const loginPopupOverlay = document.getElementById("login-popup-overlay");
+  loginPopupOverlay.style.display = "block";
+});
+
+closeLoginPopupButton.addEventListener("click", () => {
+loginPopupOverlay.style.display = "none";  // Hide the popup
+});
+
+
+// Sign-Up Logic
+signupButton.addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+
+  if (!email || !password) {
+    showToast("Please fill in both email and password.");
+    return;
+  }
+
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    showToast("Sign-up successful!");
+  } catch (error) {
+    showToast("Sign-up error: " + error.message);
+  }
+});
+
+
+// Sign-In Logic
+signinButton.addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+
+  if (!email || !password) {
+    showToast("Please fill in both email and password.");
+    return;
+  }
+
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    showToast("Sign-in successful!");
+    document.getElementById("login-popup-overlay").style.display = "none";
+  } catch (error) {
+    showToast("Sign-in error: " + error.message);
+  }
+});
+
+
+// Sign-Out Logic
+signoutButton.addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    showToast("Sign-out successful!");
+  } catch (error) {
+    showToast("Sign-out error: " + error.message);
+  }
+  loginPopupOverlay.style.display = "none";
+});
+
+
+// Auto-Login State Handling
+// Automatically check login status on page load
+onAuthStateChanged(auth, async (user) => {
+const loginPopupOverlay = document.getElementById("login-popup-overlay");
+
+
+if (user) {
+// User is authenticated
+document.getElementById("account-button").textContent = `👤✔️`;
+document.getElementById("signin-btn").style.display = "none";
+document.getElementById("signup-btn").style.display = "none";
+document.getElementById("signout-btn").style.display = "block";
+
+
+// Explicitly hide the login popup
+loginPopupOverlay.style.display = "none";
+
+
+// Automatically load the latest saved table
+try {
+  const tablesSnapshot = await getDocs(collection(db, `users/${user.uid}/tables`));
+
+
+  if (!tablesSnapshot.empty) {
+    // Find the latest saved table by timestamp
+    let latestTable = null;
+    tablesSnapshot.forEach((doc) => {
+      const tableData = doc.data();
+      if (!latestTable || new Date(tableData.timestamp) > new Date(latestTable.timestamp)) {
+        latestTable = { id: doc.id, ...tableData };
+      }
+    });
+
+
+    // Load the latest table
+    if (latestTable) {
+      //showToast(`Automatically loading the latest save for agent: ${latestTable.agentName}`);
+      loadTableFromFirestore(latestTable.id);
+    }
+  } else {
+    console.log("No saved tables found for this user.");
+  }
+} catch (error) {
+  console.error("Error fetching tables:", error);
+}
+} else {
+// User is not authenticated
+document.getElementById("account-button").textContent = "👤 Account";
+document.getElementById("signin-btn").style.display = "block";
+document.getElementById("signup-btn").style.display = "block";
+document.getElementById("signout-btn").style.display = "none";
+
+
+// Show the login popup
+loginPopupOverlay.style.display = "block";
+}
+});
+document.addEventListener("keydown", (event) => {
+// Check if the "Shift" key is pressed
+if (event.key === "Shift") {
+event.preventDefault(); // Prevent any default browser behavior for the Shift key
+
+
+// Simulate a click on the "Save Table" button
+const saveTableButton = document.getElementById("save-table-2-button"); // Replace with your Save Table button ID
+if (saveTableButton) {
+  saveTableButton.click();
+}
+}
+});
+
+
+function enableCellEditing() {
+const table = document.querySelector(".resizable-table");
+const cells = table.querySelectorAll("td, th"); // Select all table cells, including headers
+
+
+// Enable editing on touch or click
+cells.forEach((cell) => {
+cell.contentEditable = true; // Make all cells editable
+cell.addEventListener("click", () => {
+  cell.focus(); // Focus the clicked cell for editing
+});
+});
+
+
+// Enable keyboard navigation for editing
+document.addEventListener("DOMContentLoaded", () => {
+const table = document.querySelector("#myTable"); // Ensure your table has an ID
+
+
+if (!table) {
+console.error("Table not found!");
+return;
+}
+
+
+table.addEventListener("keydown", (event) => {
+const activeCell = document.activeElement;
+
+
+// Ensure the focused element is a table cell (td or th)
+if (!activeCell || !activeCell.matches("td, th")) return;
+
+
+const row = activeCell.parentElement;
+const columnIndex = Array.from(row.children).indexOf(activeCell);
+const rows = Array.from(table.querySelectorAll("tbody tr"));
+
+
+let targetCell = null;
+
+
+switch (event.key) {
+  case "ArrowUp":
+    event.preventDefault();
+    const prevRow = row.previousElementSibling;
+    if (prevRow) targetCell = prevRow.children[columnIndex];
+    break;
+
+
+  case "ArrowDown":
+    event.preventDefault();
+    const nextRow = row.nextElementSibling;
+    if (nextRow) targetCell = nextRow.children[columnIndex];
+    break;
+
+
+  case "ArrowRight":
+    event.preventDefault();
+    targetCell = activeCell.previousElementSibling;
+    break;
+
+
+  case "ArrowLeft":
+    event.preventDefault();
+    targetCell = activeCell.nextElementSibling;
+    break;
+}
+
+
+if (targetCell) targetCell.focus();
+});
+
+
+// Make all table cells focusable
+table.querySelectorAll("td, th").forEach((cell) => {
+cell.setAttribute("tabindex", "0");
+});
+});
+
+}
+
+
+// Call this function after loading or saving a table to ensure the feature is applied
+enableCellEditing();
+
+
+
+
+async function loadAutosavedTable(agentName) {
+const user = auth.currentUser;
+
+
+if (!user || agentName === "Select Agent") {
+console.error("Cannot load table: no user is logged in or no agent is selected.");
+return;
+}
+
+
+try {
+const tableDoc = await getDoc(doc(db, `users/${user.uid}/tables`, agentName));
+if (tableDoc.exists()) {
+  const { headers, rows, totalRow } = tableDoc.data();
+  const table = document.querySelector(".resizable-table");
+  const tableBody = table.querySelector("tbody");
+  const tableHead = table.querySelector("thead tr");
+
+
+  // Clear existing table rows and headers
+  tableBody.innerHTML = "";
+  tableHead.innerHTML = "";
+
+
+  // Recreate headers
+  headers.forEach((header) => {
+    const newHeaderCell = document.createElement("th");
+    newHeaderCell.textContent = header.name;
+    newHeaderCell.style.width = header.width || "auto";
+    tableHead.appendChild(newHeaderCell);
+  });
+
+  
+
+  // Recreate rows
+  rows.forEach((rowData) => {
+    const newRow = document.createElement("tr");
+    headers.forEach((header) => {
+      const cellData = rowData[header.name] || { content: "", fontSize: "", fontStyle: "", width: "" };
+      const newCell = document.createElement("td");
+      newCell.textContent = cellData.content;
+      newCell.style.fontSize = cellData.fontSize;
+      newCell.style.fontStyle = cellData.fontStyle;
+      newCell.style.width = cellData.width || "auto";
+      newRow.appendChild(newCell);
+    });
+    tableBody.appendChild(newRow);
+  });
+
+
+  // Update total row values
+  document.getElementById("total-debit").value = totalRow?.totalDebit || "0.00";
+  document.getElementById("total-credit").value = totalRow?.totalCredit || "0.00";
+  document.getElementById("total-balance").value = totalRow?.totalBalance || "0.00";
+
+
+  // Reapply cell editing and enable autosave
+  enableCellEditing();
+  enableAutosave(agentName);
+  console.log(`Autosaved table loaded for agent: ${agentName}`);
+} else {
+  console.log("No autosaved table found for this agent.");
+}
+} catch (error) {
+console.error("Failed to load autosaved table:", error);
+}
+}
+
+// DOM Elements
+
+
+const agentPopup = document.getElementById("agent-popup");
+
+//agentSelector.addEventListener("click", () => {
+// agentPopup.style.display = "block"; // Show the popup
+//});
+
+///closePopupButton.addEventListener("click", () => {
+/// agentPopup.style.display = "none"; // Hide the popup
+///});
+
+
+// Add event listeners to agent buttons
+// Call enableAutosave on agent selection
+
+
+// Show the agent selection popup
+agentSelector.addEventListener("click", () => {
+agentPopup.style.display = "block";
+});
+
+
+// Close the agent popup when clicking the "Close" button
+closePopupButton.addEventListener("click", () => {
+agentPopup.style.display = "none";
+});
+
+
+// Handle Agent Selection and Load Correct Data
+agentButtons.forEach((button) => {
+button.addEventListener("click", async () => {
+    const selectedAgent = button.getAttribute("data-agent");
+    const previousAgent = agentSelector.textContent.trim();
+
+
+    // Prevent selecting the same agent again
+    if (selectedAgent === previousAgent) {
+        agentPopup.style.display = "none";
+        return;
+    }
+
+
+    // Confirmation before switching (prevents accidental overwrites)
+    if (previousAgent !== "Select Agent") {
+        const confirmSwitch = confirm(
+            `Switching agents will clear unsaved changes. Continue?`
+        );
+        if (!confirmSwitch) return;
+        saveToFirestoreButton.click(); // Save the current table before switching
+    }
+
+
+    // Update UI with selected agent
+    agentSelector.textContent = selectedAgent;
+    agentPopup.style.display = "none";
+
+
+    // Load the table for the selected agent
+    await loadTableFromFirestore(selectedAgent);
+});
+});
+
+
+// Load the correct table when the page loads
+onAuthStateChanged(auth, async (user) => {
+if (user) {
+    console.log("User is logged in:", user.email);
+    
+    const lastSavedAgent = agentSelector.textContent.trim();
+    if (lastSavedAgent && lastSavedAgent !== "Select Agent") {
+        console.log("Auto-loading last saved agent:", lastSavedAgent);
+        await loadTableFromFirestore(lastSavedAgent);
+    }
+}
+});
+
+
+
+
+// Save Table to Firestore with Column Widths
+let lastSavedData = {}; // Stores the last saved version for change detection
+
+
+saveToFirestoreButton.addEventListener("click", async () => {
+const user = auth.currentUser;
+if (!user) {
+showToast("Sign in to save tables.");
+return;
+}
+
+
+const table = document.querySelector(".resizable-table");
+const headers = Array.from(table.querySelectorAll("thead th")).map((th) => ({
+name: th.textContent,
+width: th.style.width || "auto",
+}));
+
+
+// Collect row data for Firestore
+const rows = Array.from(table.querySelectorAll("tbody tr")).map((row) => {
+const rowData = {};
+Array.from(row.cells).forEach((cell, index) => {
+  rowData[headers[index].name || `Column${index + 1}`] = {
+    content: cell.textContent.trim(),
+    fontSize: cell.style.fontSize || "",
+    fontStyle: cell.style.fontStyle || "",
+    width: cell.style.width || "",
+  };
+});
+return rowData;
+});
+
+
+// Get agent name
+const agentName = document.getElementById("agent-selector").textContent.trim();
+if (agentName === "Select Agent") {
+showToast("Please select an agent before saving.");
+return;
+}
+
+
+// Get total row values
+const totalDebit = document.getElementById("total-debit").value || "0.00";
+const totalCredit = document.getElementById("total-credit").value || "0.00";
+const totalBalance = document.getElementById("total-balance").value || "0.00";
+
+
+// Construct new table data
+const newTableData = {
+agentName,
+headers,
+rows,
+totalRow: { totalDebit, totalCredit, totalBalance },
+timestamp: new Date().toISOString(),
+};
+
+
+// Check if data has changed (Prevent unnecessary writes)
+const newDataString = JSON.stringify(newTableData);
+if (lastSavedData[agentName] === newDataString) {
+console.log("No changes detected. Skipping save.");
+return;
+}
+
+
+try {
+// Use batch write to optimize database operations
+const batch = writeBatch(db);
+const tableRef = doc(db, `users/${user.uid}/tables`, agentName);
+batch.set(tableRef, newTableData);
+
+
+await batch.commit();
+lastSavedData[agentName] = newDataString; // Update last saved state
+showToast(`Table for "${agentName}" saved successfully!`);
+} catch (error) {
+showToast("Failed to save table: " + error.message);
+}
+});
+
+
+// Enable Autosave: Attach event listeners to track changes in the table
+let autosaveEnabled = false;
+let autosaveTimeout;
+let isSaving = false; // Prevents duplicate saves
+
+
+// Enable Autosave
+function enableAutosave() {
+const table = document.querySelector(".resizable-table");
+
+
+// Track changes only when the user finishes editing
+table.addEventListener("focusout", handleAutosaveDebounced);
+table.addEventListener("keydown", (event) => {
+if (event.key === "Enter") {
+  event.preventDefault(); // Prevents newline
+  handleAutosaveNow();
+  event.target.blur(); // Exits cell after saving
+}
+});
+
+
+// Monitor changes in total row inputs
+document.getElementById("total-debit").addEventListener("focusout", handleAutosaveDebounced);
+document.getElementById("total-credit").addEventListener("focusout", handleAutosaveDebounced);
+document.getElementById("total-balance").addEventListener("focusout", handleAutosaveDebounced);
+}
+
+
+// Disable Autosave
+function disableAutosave() {
+const table = document.querySelector(".resizable-table");
+
+
+table.removeEventListener("focusout", handleAutosaveDebounced);
+table.removeEventListener("keydown", handleAutosaveNow);
+
+
+document.getElementById("total-debit").removeEventListener("focusout", handleAutosaveDebounced);
+document.getElementById("total-credit").removeEventListener("focusout", handleAutosaveDebounced);
+document.getElementById("total-balance").removeEventListener("focusout", handleAutosaveDebounced);
+}
+
+
+// Debounced Autosave - Waits before saving
+function handleAutosaveDebounced(event) {
+if (!autosaveEnabled || event.target.tagName !== "TD") return;
+
+
+clearTimeout(autosaveTimeout);
+autosaveTimeout = setTimeout(handleAutosaveNow, 500); // Delayed save
+}
+
+
+// Immediate Save on Cell Exit or Enter Key
+function handleAutosaveNow() {
+if (!autosaveEnabled || isSaving) return;
+
+
+isSaving = true;
+showAutosaveIndicator(); // Show "Saving..." message
+
+
+try {
+document.getElementById("save-table-2-button").click(); // Trigger save
+console.log("Autosaved Table!"); // Debugging log
+} catch (error) {
+console.error("Autosave failed:", error);
+} finally {
+setTimeout(() => {
+  hideAutosaveIndicator();
+  isSaving = false;
+}, 1500); // Simulated save delay
+}
+}
+
+
+// Show Autosave Indicator
+function showAutosaveIndicator() {
+const indicator = document.getElementById("autosave-indicator");
+indicator.style.display = "block";
+}
+
+
+// Hide Autosave Indicator
+function hideAutosaveIndicator() {
+const indicator = document.getElementById("autosave-indicator");
+indicator.style.display = "none";
+}
+
+
+// Enable Autosave Button Handler
+document.getElementById("enable-autosave-button").addEventListener("click", () => {
+autosaveEnabled = !autosaveEnabled;
+document.getElementById("enable-autosave-button").textContent = autosaveEnabled ? "Disable Autosave" : "Enable Autosave";
+
+
+if (autosaveEnabled) {
+enableAutosave();
+} else {
+disableAutosave();
+}
+});
+
+
+// Enable Autosave Button
+
+
+// Function to Trigger Save
+async function autosave() {
+if (autosaveEnabled) {
+const saveToFirestoreButton = document.getElementById("save-table-2-button");
+if (saveToFirestoreButton) {
+  saveToFirestoreButton.click();
+}
+}
+}
+
+
+// Toggle Autosave on Button Click
+
+
+
+// Trigger Save on Calculation
+document.getElementById("calculate-total").addEventListener("click", autosave);
+
+
+// Trigger Save on Column Resize
+document.querySelectorAll(".slider-container input[type='range']").forEach((slider) => {
+slider.addEventListener("input", autosave);
+});
+
+
+// Optional: Ensure Any Future Resizing Sliders Are Linked
+function attachSliderAutosave() {
+document.querySelectorAll(".slider-container input[type='range']").forEach((slider) => {
+slider.removeEventListener("input", autosave); // Avoid duplicates
+slider.addEventListener("input", autosave);
+});
+}
+
+
+
+// Load Tables from Firestore
+loadFirestorePopupButton.addEventListener("click", async () => {
+  const user = auth.currentUser;
+  if (!user) {
+    showToast("Sign in to load tables.");
+    return;
+  }
+
+
+  firestorePopup.style.display = "block";
+  firestoreTableList.innerHTML = "<p>Loading tables...</p>";
+
+
+  try {
+    const tablesSnapshot = await getDocs(collection(db, `users/${user.uid}/tables`));
+    firestoreTableList.innerHTML = "";
+
+
+    tablesSnapshot.forEach((doc) => {
+      const tableData = doc.data();
+      const tableEntry = document.createElement("div");
+      tableEntry.className = "saved-file-entry";
+      tableEntry.innerHTML = `
+        <p><strong>${tableData.agentName}</strong> (Saved on: ${new Date(
+        tableData.timestamp
+      ).toLocaleString()})</p>
+        <button class="load-button" data-id="${doc.id}">Load</button>
+        <button class="delete-button" data-id="${doc.id}">Delete</button>
+      `;
+      firestoreTableList.appendChild(tableEntry);
+    });
+
+
+    // Add event listeners for Load and Delete buttons
+    firestoreTableList.querySelectorAll(".load-button").forEach((button) => {
+      button.addEventListener("click", () => loadTableFromFirestore(button.dataset.id));
+    });
+
+
+    firestoreTableList.querySelectorAll(".delete-button").forEach((button) => {
+      button.addEventListener("click", () => deleteTableFromFirestore(button.dataset.id));
+    });
+  } catch (error) {
+    showToast("Failed to load tables: " + error.message);
+  }
+});
+
+
+// Close Firestore Popup
+closeFirestorePopupButton.addEventListener("click", () => {
+  firestorePopup.style.display = "none";
+});
+
+
+function reapplyCellEditing() {
+document.querySelectorAll("td").forEach((cell) => {
+cell.addEventListener("dblclick", () => {
+  const originalContent = cell.textContent;
+
+
+  // Create input field for editing
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = originalContent;
+  input.style.width = "100%";
+
+
+  // Replace cell content with input
+  cell.textContent = "";
+  cell.appendChild(input);
+
+
+  // Save changes on blur or Enter key
+  input.addEventListener("blur", () => {
+    cell.textContent = input.value || originalContent;
+  });
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      cell.textContent = input.value || originalContent;
+    }
+  });
+
+
+  // Focus input field
+  input.focus();
+});
+});
+}
+function reapplyColumnResizing() {
+const table = document.querySelector(".resizable-table");
+const slidersContainer = document.getElementById("sliders-container");
+
+
+// Clear previous sliders
+slidersContainer.innerHTML = "";
+
+
+const columns = table.querySelectorAll("thead th");
+columns.forEach((column, index) => {
+// Create slider container
+const sliderContainer = document.createElement("div");
+sliderContainer.className = "slider-container";
+
+
+// Column label
+const label = document.createElement("label");
+label.textContent = `Column ${index + 1}`;
+
+
+// Slider
+const slider = document.createElement("input");
+slider.type = "range";
+slider.min = "50";
+slider.max = "500";
+slider.value = parseInt(column.style.width) || column.offsetWidth;
+
+
+// Slider value display
+const valueDisplay = document.createElement("span");
+valueDisplay.className = "slider-value";
+valueDisplay.textContent = `${slider.value}px`;
+
+
+// Update column width on slider input
+slider.addEventListener("input", () => {
+  column.style.width = `${slider.value}px`;
+  table.querySelectorAll(`td:nth-child(${index + 1})`).forEach((cell) => {
+    cell.style.width = `${slider.value}px`;
+  });
+  valueDisplay.textContent = `${slider.value}px`;
+});
+
+
+// Append elements to slider container
+sliderContainer.appendChild(label);
+sliderContainer.appendChild(slider);
+sliderContainer.appendChild(valueDisplay);
+
+
+// Append slider container to sliders container
+slidersContainer.appendChild(sliderContainer);
+});
+}
+
+
+
+async function clearTable() {
+const user = auth.currentUser;
+
+
+if (!user) {
+    console.error("No user is logged in.");
+    return;
+}
+
+
+const agentName = document.getElementById("agent-selector").textContent.trim();
+
+
+if (agentName === "Select Agent") {
+    console.error("No agent selected.");
+    return;
+}
+
+
+try {
+    // Check if the table exists in Firestore for the selected agent
+    const tableDoc = await getDoc(doc(db, `users/${user.uid}/tables`, agentName));
+
+
+    if (tableDoc.exists()) {
+        console.log(`Table exists for agent: ${agentName}. Not clearing.`);
+        return; // Exit if a table is saved
+    }
+
+
+    // If no table exists, clear the table
+    const table = document.querySelector(".resizable-table");
+    const tableBody = table.querySelector("tbody");
+    const tableHead = table.querySelector("thead");
+
+
+    // Clear the table content
+    tableBody.innerHTML = "";
+    tableHead.innerHTML = "";
+
+
+    // Add default headers
+    const headerRow = document.createElement("tr");
+    const headers = ["", "مدين", "دائن", "نقل", "التاريخ", "البيان", "الرصيد"];
+
+
+    headers.forEach((headerText) => {
+        const th = document.createElement("th");
+        th.textContent = headerText;
+        headerRow.appendChild(th);
+    });
+
+
+    tableHead.appendChild(headerRow);
+
+
+    // Add default rows
+    for (let i = 0; i < 10; i++) {
+        const row = document.createElement("tr");
+
+
+        headers.forEach((_, columnIndex) => {
+            const cell = document.createElement("td");
+            cell.textContent = ""; // Other cells remain empty
+            cell.contentEditable = true;
+
+
+            // ✅ Ensure double-click for the 5th column (date selection)
+            if (columnIndex === 4) { // 5th column index (0-based)
+                cell.addEventListener("dblclick", handleDateCellClick);
+            }
+
+
+            row.appendChild(cell);
+        });
+
+
+        tableBody.appendChild(row);
+    }
+
+
+    // Reset total values
+    document.getElementById("total-debit").value = "0.00";
+    document.getElementById("total-credit").value = "0.00";
+    document.getElementById("total-balance").value = "0.00";
+
+
+    console.log(`Table cleared for agent: ${agentName}`);
+} catch (error) {
+    console.error("Error checking or clearing table:", error);
+    showToast("Failed to clear the table due to an error.");
+}
+}
+
+
+function applyDatePopupToCells() {
+document.querySelectorAll("td:nth-child(5)").forEach((cell) => {
+    cell.removeEventListener("dblclick", handleDateCellClick); // Prevent duplicates
+    cell.addEventListener("dblclick", handleDateCellClick);
+});
+}
+
+
+function handleDateCellClick(event) {
+const cell = event.target;
+console.log("Date cell double-clicked!");
+
+
+activeCell = cell;  // Store the clicked cell
+const currentDate = activeCell.textContent.trim();
+console.log("Current Date in Cell:", currentDate);
+
+
+const [day, month] = currentDate.split('/');
+document.getElementById("select-day").value = day || "01";
+document.getElementById("select-month").value = month || "01";
+
+
+document.getElementById("date-popup").style.display = "flex";
+}
+
+
+// Load Table from Firestore
+// Load Table from Firestore with Column Widths
+let localTableCache = {}; // Stores recently loaded tables to reduce Firestore reads
+
+async function loadTableFromFirestore(agentName) {
+const user = auth.currentUser;
+if (!user) {
+    showToast("Sign in to load tables.");
+    return;
+}
+
+
+try {
+    const tableRef = doc(db, `users/${user.uid}/tables`, agentName);
+    const tableSnapshot = await getDoc(tableRef);
+
+
+    const table = document.querySelector(".resizable-table");
+    const tableBody = table.querySelector("tbody");
+    const tableHead = table.querySelector("thead");
+
+
+    // ✅ Clear table before loading
+    tableBody.innerHTML = "";
+    tableHead.innerHTML = "";
+
+
+    if (tableSnapshot.exists()) {
+        const { headers, rows, totalRow, agentName: savedAgentName } = tableSnapshot.data();
+
+
+        console.log("🔥 Loading Table Data:", { headers, rows, totalRow, savedAgentName });
+
+
+        // ✅ Restore headers
+        const headerRow = document.createElement("tr");
+        headers.forEach((header) => {
+            const newHeaderCell = document.createElement("th");
+            newHeaderCell.textContent = header.name || "";
+            newHeaderCell.style.width = header.width || "auto";
+            headerRow.appendChild(newHeaderCell);
+        });
+        tableHead.appendChild(headerRow);
+
+
+        // ✅ Restore rows, including added ones
+        rows.forEach((rowData) => {
+            const newRow = document.createElement("tr");
+
+
+            headers.forEach((header, index) => {
+                const cellData = rowData[header.name] || { content: "", fontSize: "", fontStyle: "", width: "" };
+                const newCell = document.createElement("td");
+
+
+                newCell.textContent = cellData.content || "";
+                newCell.style.fontSize = cellData.fontSize || "";
+                newCell.style.fontStyle = cellData.fontStyle || "";
+                newCell.style.width = cellData.width || "auto";
+                newCell.contentEditable = true; // ✅ Make sure cells are still editable
+
+
+                // ✅ Ensure double-click for 5th column (date selection)
+                if (index === 4) {
+                    newCell.addEventListener("dblclick", handleDateCellClick);
+                }
+
+
+                newRow.appendChild(newCell);
+            });
+
+
+            tableBody.appendChild(newRow);
+        });
+
+
+        // ✅ Restore totals
+        document.getElementById("total-debit").value = totalRow?.totalDebit || "0.00";
+        document.getElementById("total-credit").value = totalRow?.totalCredit || "0.00";
+        document.getElementById("total-balance").value = totalRow?.totalBalance || "0.00";
+
+
+        // ✅ FIX: Update the agent name in the UI
+        document.getElementById("agent-selector").textContent = savedAgentName || agentName;
+
+
+        showToast("✅ Table loaded successfully!");
+
+
+    } else {
+        console.log(`⚠️ No saved table for agent: ${agentName}. Creating a new empty table.`);
+        clearTable();
+    }
+
+
+    // ✅ Ensure new rows can be edited after load
+    enableCellEditing();
+    reapplyColumnResizing();
+
+
+} catch (error) {
+    console.error("🔥 Load Error:", error);
+    showToast("❌ Failed to load table: " + error.message);
+}
+}
+
+
+
+// Delete Table from Firestore
+async function deleteTableFromFirestore(docId) {
+  const user = auth.currentUser;
+  if (!user) {
+    showToast("Sign in to delete tables.");
+    return;
+  }
+
+
+  if (!confirm("Are you sure you want to delete this table?")) {
+    return;
+  }
+
+
+  try {
+    await deleteDoc(doc(db, `users/${user.uid}/tables`, docId));
+    showToast("Table deleted successfully!");
+    loadFirestorePopupButton.click(); // Refresh the popup
+  } catch (error) {
+    showToast("Failed to delete table: " + error.message);
+  }
+
+}
+window.onload = () => {
+  autosaveEnabled = true;
+  enableAutosave();
+}
+    </script>
     
 </body>
 </html>
